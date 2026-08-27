@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const mode = process.argv[2] || 'local';
 const storyLink = mode === 'artifact' ? process.argv[3] : 'my-story.html';
-const homeLink  = mode === 'artifact' ? process.argv[4] : 'mason-koski.html';
+const homeLink  = mode === 'artifact' ? process.argv[4] : 'index.html';
 
 const logo = fs.readFileSync('logo.b64', 'utf8').trim();
 const portrait = fs.readFileSync('portrait.b64', 'utf8').trim();
@@ -53,5 +53,5 @@ function build(tpl, out) {
   console.log(`${out}: ${fs.statSync(out).size} bytes, placeholders left: ${left}`);
 }
 
-build('mason-koski-template.html', 'mason-koski.html');
+build('mason-koski-template.html', 'index.html');
 build('my-story-template.html', 'my-story.html');
