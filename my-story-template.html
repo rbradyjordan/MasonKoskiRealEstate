@@ -1,0 +1,392 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Shares the Mason Koski system — see mason-koski.html for the computed
+   contrast table. Same tokens, same rules. */
+:root{
+  --paper:#f7f2e9; --paper-alt:#efe6d6;
+  --ink:#241d14; --ink-deep:#191309;
+  --blue:#b7cdf4; --blue-deep:#2d4d9c;
+  --muted:#6b6156; --muted-dark:#bfb3a1;
+  --hairline:rgba(36,29,20,.15); --hairline-dark:rgba(247,242,233,.18);
+  --radius:16px; --radius-sm:9px;
+  --step--1:clamp(.88rem,.84rem + .2vw,1rem);
+  --step-0:clamp(1.05rem,1rem + .35vw,1.2rem);
+  --step-1:clamp(1.25rem,1.15rem + .6vw,1.55rem);
+  --step-2:clamp(1.55rem,1.35rem + 1.2vw,2.15rem);
+  --step-3:clamp(1.95rem,1.6rem + 2vw,3.05rem);
+  --step-4:clamp(2.5rem,1.95rem + 3.2vw,4.2rem);
+  --step-5:clamp(2.9rem,2.05rem + 4.6vw,5.6rem);
+  --shell:min(92vw,78rem);
+  --section-y:clamp(5rem,10vw,8.5rem);
+  --ease-out:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:6.5rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:"Public Sans",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:var(--step-0);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
+::selection{background:var(--blue-deep);color:var(--paper)}
+img,svg{max-width:100%}
+a{color:inherit}
+.shell{width:var(--shell);margin-inline:auto}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;top:.6rem;left:.6rem;z-index:99;background:var(--ink);color:var(--paper);padding:.6rem 1rem;border-radius:8px;transform:translateY(-200%);transition:transform .2s var(--ease-out);text-decoration:none;font-weight:600}
+.skip:focus{transform:none}
+:focus-visible{outline:2px solid var(--blue-deep);outline-offset:3px;border-radius:2px}
+.on-dark :focus-visible{outline-color:var(--blue)}
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.045;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:220px 220px}
+.display{font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-weight:600;line-height:1.06;letter-spacing:-.008em;text-wrap:balance}
+.brandcaps{font-family:"Source Serif 4",Georgia,serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.74rem}
+.eyebrow{font-family:"Source Serif 4",Georgia,serif;font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:.74rem;color:var(--blue-deep)}
+.on-dark .eyebrow{color:var(--blue)}
+p{max-width:56ch;text-wrap:pretty}
+.muted{color:var(--muted)}
+.nav{position:fixed;top:1rem;left:50%;margin-left:calc(var(--shell)/-2);width:var(--shell);z-index:70;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.6rem .6rem .6rem 1.2rem;border-radius:999px;background:rgba(247,242,233,.86);-webkit-backdrop-filter:blur(14px) saturate(1.15);backdrop-filter:blur(14px) saturate(1.15);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 -1px 0 rgba(36,29,20,.12),0 12px 32px rgba(25,19,9,.16);color:var(--ink)}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo img{height:2.35rem;width:auto;mix-blend-mode:multiply}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{text-decoration:none;position:relative;padding-block:.35rem;color:var(--ink);font-weight:700}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--blue-deep);transition:right .3s var(--ease-out)}
+.nav-links a:hover::after,.nav-links a[aria-current]::after{right:0}
+.btn{display:inline-block;text-decoration:none;border-radius:999px;padding:.78rem 1.6rem;font-weight:700;font-size:.92rem;transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out);will-change:transform}
+.btn-blue{background:var(--blue-deep);color:var(--paper)}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(45,77,156,.35)}
+.btn-cream{background:var(--paper);color:var(--ink)}
+.btn-cream:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(25,19,9,.35)}
+.btn-line-ink{border:1.5px solid var(--hairline);color:var(--ink);font-weight:700}
+.btn-line-ink:hover{transform:translateY(-2px)}
+@media (max-width:60rem){.nav-links{display:none}}
+section{padding-block:var(--section-y)}
+
+/* ---------- Mobile menu toggle ---------- */
+.nav-actions{display:flex;align-items:center;gap:.5rem}
+.nav-toggle{display:none;width:2.5rem;height:2.5rem;border-radius:999px;border:0;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;padding:0;flex:none}
+.nav-toggle span{display:block;width:1.25rem;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s var(--ease-out),opacity .3s var(--ease-out)}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media (max-width:60rem){.nav-toggle{display:flex}}
+.mobile-menu{position:fixed;top:4.6rem;left:50%;margin-left:calc(var(--shell)/-2);width:var(--shell);z-index:65;
+  background:rgba(247,242,233,.97);-webkit-backdrop-filter:blur(14px) saturate(1.15);backdrop-filter:blur(14px) saturate(1.15);
+  border-radius:20px;box-shadow:0 20px 44px rgba(25,19,9,.22);padding:.7rem;
+  opacity:0;transform:translateY(-10px) scale(.98);transform-origin:top center;pointer-events:none;
+  transition:opacity .3s var(--ease-out),transform .3s var(--ease-out)}
+.mobile-menu[data-open]{opacity:1;transform:none;pointer-events:auto}
+.mobile-menu ul{list-style:none;display:flex;flex-direction:column}
+.mobile-menu a{display:block;padding:.9rem 1rem;text-decoration:none;color:var(--ink);font-weight:700;border-radius:12px;font-family:"Source Serif 4",Georgia,serif;font-size:var(--step-1)}
+.mobile-menu a:hover,.mobile-menu a:focus-visible{background:var(--paper-alt)}
+.mobile-menu a[aria-current]{color:var(--blue-deep)}
+@media (min-width:60.01rem){.mobile-menu{display:none}}
+@media (prefers-reduced-motion:reduce){.mobile-menu{transition:none}}
+
+/* Cascade primitives — transform/opacity only */
+.cas{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);transition-delay:calc(var(--i,0)*90ms)}
+.in .cas,.cas.in{opacity:1;transform:none}
+.hload{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);transition-delay:var(--d,0s)}
+.loaded .hload{opacity:1;transform:none}
+.word-mask{display:inline-block;overflow:clip;vertical-align:bottom;padding-bottom:.12em;margin-bottom:-.12em}
+.word-mask>span{display:inline-block;transform:translateY(115%) rotate(1.6deg);transform-origin:0 100%;transition:transform .85s var(--ease-out)}
+.words-in .word-mask>span{transform:none}
+.word-mask.done{overflow:visible}
+
+/* ---------- Story hero ---------- */
+.shero{min-height:82svh;display:flex;align-items:center;padding-top:7.5rem;padding-bottom:4rem;background:var(--paper)}
+.shero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2.5rem,5vw,5rem);align-items:center}
+.shero h1{font-size:var(--step-5);max-width:13ch}
+.shero h1 em{font-style:italic;font-weight:400;color:var(--blue-deep)}
+.shero .eyebrow{display:block;margin-bottom:1.3rem}
+.shero-sub{margin-top:1.8rem;font-size:var(--step-1);line-height:1.5;color:var(--muted);max-width:42ch}
+.sportrait{position:relative;justify-self:center;width:min(100%,24rem)}
+.sportrait .frame{border-radius:999rem 999rem var(--radius) var(--radius);overflow:clip;box-shadow:0 30px 70px rgba(25,19,9,.28)}
+.sportrait img{display:block;width:100%;height:auto}
+.sportrait::before{content:"";position:absolute;inset:0;transform:translate(1.15rem,1.15rem);border:2px solid var(--blue-deep);border-radius:999rem 999rem var(--radius) var(--radius);z-index:-1}
+@media (max-width:56rem){.shero-grid{grid-template-columns:1fr}.sportrait{width:min(100%,18rem);order:-1}}
+
+/* ---------- Chapters — a real sequence, so the timeline earns its numbers ---------- */
+.chapters{position:relative}
+.chapter{display:grid;grid-template-columns:5.5rem 1fr;gap:clamp(1.5rem,4vw,3.5rem);padding-block:clamp(2.6rem,5vw,4rem);border-top:1px solid var(--hairline);align-items:start}
+.chapter:first-of-type{border-top:0}
+.ch-marker{position:sticky;top:7rem;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.ch-marker .n{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-weight:400;font-size:var(--step-2);color:var(--blue-deep)}
+.ch-marker .stem{width:1px;flex:1;min-height:2.5rem;background:var(--hairline)}
+.chapter .place{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-deep);font-weight:700}
+.chapter h2{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:var(--step-3);line-height:1.1;margin:.5rem 0 1rem;text-wrap:balance;max-width:20ch}
+.chapter p{color:var(--ink);margin-bottom:1rem}
+.chapter p:last-child{margin-bottom:0}
+.chapter .aside{color:var(--muted);font-size:var(--step--1);border-left:2px solid var(--blue-deep);padding-left:1rem;max-width:48ch}
+@media (max-width:44rem){.chapter{grid-template-columns:2.6rem 1fr}}
+
+/* ---------- Divider band between hero and chapters ---------- */
+.band{background:var(--blue-deep);color:var(--paper);text-align:center;padding:1.15rem 1rem}
+.band span{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-size:var(--step-1);letter-spacing:.01em}
+
+/* ---------- The dog section — typographic, no illustration ---------- */
+.dog{background:var(--ink-deep);color:var(--paper);overflow:clip}
+.dog-grid{display:grid;grid-template-columns:1fr .9fr;gap:clamp(2.5rem,6vw,5rem);align-items:center}
+.dog h2{font-size:var(--step-3)}
+.dog h2 em{font-style:italic;font-weight:400;color:var(--blue)}
+.dog p{color:var(--paper);margin-top:1.1rem}
+.dog .fine{color:var(--muted-dark);font-size:var(--step--1)}
+.dog-pull{border-left:2px solid var(--blue);padding-left:clamp(1.4rem,3vw,2.4rem)}
+.dog-pull p{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-weight:400;font-size:var(--step-3);line-height:1.18;color:var(--blue);margin:0;text-wrap:balance}
+.dog-pull small{display:block;margin-top:1.2rem;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-dark);font-weight:600}
+@media (max-width:56rem){.dog-grid{grid-template-columns:1fr}}
+
+/* ---------- Closing CTA ---------- */
+.close-cta{background:var(--paper);text-align:center}
+.close-cta h2{font-size:var(--step-4);max-width:18ch;margin-inline:auto}
+.close-cta .row{margin-top:2.2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.close-cta p{margin:1.2rem auto 0;color:var(--muted)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;border-top:1px solid var(--hairline-dark)}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:2rem;padding-bottom:2.6rem;border-bottom:1px solid var(--hairline-dark)}
+.foot-grid h4{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-dark);margin-bottom:1rem;font-weight:700}
+.foot-grid ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.foot-grid a{text-decoration:none;color:var(--paper);font-size:var(--step--1)}
+.foot-grid a:hover{color:var(--blue)}
+.foot-logo img{height:4.4rem;width:auto;filter:invert(1);mix-blend-mode:screen}
+.legal{padding-top:2rem;display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-start}
+.legal p{font-size:.74rem;color:var(--muted-dark);line-height:1.6;max-width:64ch}
+.legal-marks{display:flex;gap:1rem;align-items:center;color:var(--muted-dark)}
+@media (max-width:56rem){.foot-grid{grid-template-columns:1fr 1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  .word-mask>span{transform:none;transition:none}
+  .word-mask{overflow:visible}
+  .cas,.hload{opacity:1;transform:none;transition:none}
+  .btn{transition:none}
+  .btn:hover{transform:none}
+}
+</style>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Primary">
+  <a class="nav-logo" href="%%HOMELINK%%">
+    <img src="data:image/png;base64,%%LOGO%%" alt="Mason Koski, Atlanta Realtor">
+  </a>
+  <ul class="nav-links brandcaps">
+    <li><a href="%%HOMELINK%%#buy">Buy</a></li>
+    <li><a href="%%HOMELINK%%#sell">Sell</a></li>
+    <li><a href="%%HOMELINK%%#neighborhoods">Neighborhoods</a></li>
+    <li><a href="#vamo">VAMO</a></li>
+    <li><a href="#top" aria-current="page">My Story</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a class="btn btn-blue" href="%%HOMELINK%%#contact">Let’s talk</a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <ul class="brandcaps">
+    <li><a href="%%HOMELINK%%#buy">Buy</a></li>
+    <li><a href="%%HOMELINK%%#sell">Sell</a></li>
+    <li><a href="%%HOMELINK%%#neighborhoods">Neighborhoods</a></li>
+    <li><a href="#vamo">VAMO</a></li>
+    <li><a href="#top" aria-current="page">My Story</a></li>
+  </ul>
+</div>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<header class="shero loaded-target" id="top">
+  <div class="shell shero-grid">
+    <div>
+      <span class="eyebrow hload" style="--d:.15s">My story</span>
+      <h1 class="display" id="story-h">
+        <span class="sr-only">I’ve been learning this city my whole life.</span>
+        <span aria-hidden="true" id="story-words">I’ve been <em>learning</em> this city my whole life.</span>
+      </h1>
+      <p class="shero-sub hload" style="--d:.9s">Decatur raised, Athens educated, Virginia-Highland based. This is how I got here.</p>
+    </div>
+    <div class="sportrait hload" style="--d:.35s">
+      <div class="frame">
+        <img src="data:image/jpeg;base64,%%PORTRAIT%%" alt="Mason Koski, smiling, in a blue and white toile dress" width="733" height="1100">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ DIVIDER ============ -->
+<div class="band" aria-hidden="true">
+  <span>Decatur → Athens → Virginia-Highland → VAMO</span>
+</div>
+
+<!-- ============ CHAPTERS ============ -->
+<section class="chapters" aria-label="The story, in order">
+  <div class="shell">
+
+    <article class="chapter cas-group">
+      <div class="ch-marker" aria-hidden="true"><span class="n">i.</span><span class="stem"></span></div>
+      <div>
+        <span class="place cas" style="--i:0">Decatur</span>
+        <h2 class="cas" style="--i:1">Raised where the square is the whole social calendar.</h2>
+        <p class="cas" style="--i:2">I grew up in Decatur: festivals on the square, a city small enough to walk and big enough to matter. Before I ever had a license to sell houses here, I knew which streets flood, which shortcuts actually work, and where to be on a Friday night.</p>
+        <p class="aside cas" style="--i:3">My office today is on West Ponce, about a mile from where I grew up. That is not an accident.</p>
+      </div>
+    </article>
+
+    <article class="chapter cas-group">
+      <div class="ch-marker" aria-hidden="true"><span class="n">ii.</span><span class="stem"></span></div>
+      <div>
+        <span class="place cas" style="--i:0">Athens</span>
+        <h2 class="cas" style="--i:1">UGA, magna cum laude.</h2>
+        <p class="cas" style="--i:2">Athens taught me something I still build on: a place feels like yours when the people in it know you. I studied Health Promotion, graduated magna cum laude, and came home to Atlanta wanting to help people feel at home somewhere.</p>
+      </div>
+    </article>
+
+    <article class="chapter cas-group">
+      <div class="ch-marker" aria-hidden="true"><span class="n">iii.</span><span class="stem"></span></div>
+      <div>
+        <span class="place cas" style="--i:0">Virginia-Highland</span>
+        <h2 class="cas" style="--i:1">Home is a bungalow street I walk twice a day.</h2>
+        <p class="cas" style="--i:2">These days I live in Virginia-Highland, and my market research happens on foot. I walk the same streets every day, past the 1920s bungalows, the porches, and the for-sale signs that go up and come down. When I tell you what a street is really like, it’s because I was on it this morning.</p>
+      </div>
+    </article>
+
+    <article class="chapter cas-group" id="vamo">
+      <div class="ch-marker" aria-hidden="true"><span class="n">iv.</span><span class="stem"></span></div>
+      <div>
+        <span class="place cas" style="--i:0">VAMO</span>
+        <h2 class="cas" style="--i:1">Fifty name tags. Seventy people. The rest is momentum.</h2>
+        <p class="cas" style="--i:2">Atlanta’s networking scene felt corporate and impersonal, so eventually I stopped waiting for someone else to fix it. I printed flyers, talked local businesses into giveaways, and bought 50 name tags hoping ten friends might show up. Seventy people came. VAMO Rising Professionals has been growing ever since: rooftop DJs, headshot stations, and a monthly room full of people figuring out this city together.</p>
+        <p class="aside cas" style="--i:3">VAMO isn’t a sales funnel, and it never will be. It’s the part of my week that would exist even if it never sold a single house. <a href="%%HOMELINK%%#vamo" style="color:var(--blue-deep);font-weight:700">Come to the next one →</a></p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ CLOSING CTA ============ -->
+<section class="close-cta cas-group">
+  <div class="shell">
+    <span class="eyebrow cas" style="--i:0">Get in touch</span>
+    <h2 class="display cas" style="--i:1">Let’s talk about your first move.</h2>
+    <p class="cas" style="--i:2">Whether you’re two years out or two weeks out, I’m glad to talk it through.</p>
+    <div class="row cas" style="--i:3">
+      <a class="btn btn-blue" href="%%HOMELINK%%#doors">Start where you are</a>
+      <a class="btn btn-line-ink" href="#vamo">Come to VAMO</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer aria-label="Site footer">
+  <div class="shell">
+    <div class="foot-grid">
+      <div class="foot-logo">
+        <img src="data:image/png;base64,%%LOGO%%" alt="Mason Koski, Atlanta Realtor">
+      </div>
+      <div>
+        <h4>Buy</h4>
+        <ul><li><a href="%%HOMELINK%%#buy">The 10-step process</a></li><li><a href="%%HOMELINK%%#honest">How agents get paid</a></li><li><a href="%%HOMELINK%%#doors">Readiness check</a></li></ul>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul><li><a href="%%HOMELINK%%#neighborhoods">Neighborhoods</a></li><li><a href="%%HOMELINK%%#journal">Journal</a></li><li><a href="%%HOMELINK%%#vamo">VAMO</a></li><li><a href="#top">My Story</a></li></ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul><li><a href="tel:+14048843134">(404) 884-3134</a></li><li><a href="mailto:masonkoski@kw.com">masonkoski@kw.com</a></li><li><a href="%%HOMELINK%%#reviews">Reviews</a></li></ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>Mason Koski, REALTOR® · Keller Williams Realty Metro Atlanta · 101 W Ponce de Leon Ave Suite 200, Decatur, GA 30030. Each Keller Williams office is independently owned and operated. Georgia license number and broker information displayed per GREC advertising rules; final details pending broker verification. This is a design draft; all facts subject to the Phase&nbsp;0 verification pass.</p>
+      <div class="legal-marks" aria-label="Equal Housing Opportunity mark">
+        <svg width="34" height="34" viewBox="0 0 24 24" role="img" aria-label="Equal Housing Opportunity" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3 3 10h2v10h14V10h2L12 3z"/><path d="M8 13h8M8 16h8"/></svg>
+        <span class="brandcaps" style="font-size:.64rem">Equal Housing<br>Opportunity</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var navToggle = document.querySelector('.nav-toggle');
+  var mobileMenu = document.getElementById('mobile-menu');
+  if (navToggle && mobileMenu) {
+    var closeMenu = function(){
+      navToggle.setAttribute('aria-expanded','false');
+      mobileMenu.removeAttribute('data-open');
+      mobileMenu.setAttribute('aria-hidden','true');
+    };
+    var openMenu = function(){
+      navToggle.setAttribute('aria-expanded','true');
+      mobileMenu.setAttribute('data-open','');
+      mobileMenu.removeAttribute('aria-hidden');
+    };
+    navToggle.addEventListener('click', function(){
+      (navToggle.getAttribute('aria-expanded') === 'true') ? closeMenu() : openMenu();
+    });
+    mobileMenu.addEventListener('click', function(e){
+      if (e.target.closest('a')) closeMenu();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeMenu();
+    });
+    document.addEventListener('click', function(e){
+      if (mobileMenu.hasAttribute('data-open') && !mobileMenu.contains(e.target) && !navToggle.contains(e.target)) closeMenu();
+    });
+    matchMedia('(min-width: 60.01rem)').addEventListener('change', function(e){
+      if (e.matches) closeMenu();
+    });
+  }
+  var hero = document.querySelector('.shero');
+
+  var host = document.getElementById('story-words');
+  var masks = [];
+  if (host && !reduced) {
+    function wrapWords(node){
+      var kids = Array.prototype.slice.call(node.childNodes);
+      kids.forEach(function(k){
+        if (k.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          k.textContent.split(/(\s+)/).forEach(function(part){
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var m = document.createElement('span'); m.className = 'word-mask';
+            var w = document.createElement('span'); w.textContent = part;
+            m.appendChild(w); frag.appendChild(m);
+          });
+          node.replaceChild(frag, k);
+        } else if (k.nodeType === 1) { wrapWords(k); }
+      });
+    }
+    wrapWords(host);
+    masks = Array.prototype.slice.call(host.querySelectorAll('.word-mask'));
+    masks.forEach(function(m,i){ m.firstChild.style.transitionDelay = (0.28 + 0.055*i)+'s'; });
+  }
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){
+    if (hero) hero.classList.add('loaded');
+    if (host && !reduced) {
+      host.classList.add('words-in');
+      setTimeout(function(){ masks.forEach(function(m){ m.classList.add('done'); }); }, 1150 + 55*masks.length + 280);
+    }
+  });});
+
+  if (!reduced && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -12% 0px' });
+    document.querySelectorAll('.cas-group').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.cas').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
