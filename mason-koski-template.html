@@ -86,8 +86,8 @@ p{max-width:56ch;text-wrap:pretty}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 -1px 0 rgba(36,29,20,.12),0 12px 32px rgba(25,19,9,.16);
   color:var(--ink)}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
-.wordmark{display:inline-flex;flex-direction:column;align-items:center;line-height:1;font-family:"Source Serif 4",Georgia,serif}
-.wm-name{font-weight:700;font-size:1.12rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.wordmark{display:inline-flex;flex-direction:column;align-items:center;line-height:1;font-family:"Source Serif 4",Georgia,serif;white-space:nowrap}
+.wm-name{font-weight:700;font-size:1.12rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
 .wm-sub{font-weight:600;font-size:.585rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.36rem;text-align:center;white-space:nowrap}
 .nav-links{display:flex;gap:1.5rem;list-style:none}
 .nav-links a{text-decoration:none;position:relative;padding-block:.35rem;color:var(--ink);font-weight:700}
@@ -101,6 +101,17 @@ p{max-width:56ch;text-wrap:pretty}
 .btn-line-ink{border:1.5px solid var(--hairline);color:var(--ink);font-weight:700}
 .btn-line-ink:hover{transform:translateY(-2px)}
 @media (max-width:60rem){.nav-links{display:none}}
+/* Mobile: header scrolls away with the page instead of sticking */
+@media (max-width:48rem){
+  html{scroll-padding-top:1.5rem}
+  .nav{position:static;margin:1rem auto 0;left:auto}
+  .mobile-menu{position:absolute}
+}
+@media (max-width:34rem){
+  .nav{padding-left:.95rem}
+  .nav-actions .btn-blue{padding:.62rem 1rem;font-size:.7rem;letter-spacing:.05em;white-space:nowrap}
+  .wm-name{font-size:1.02rem}
+}
 
 /* ---------- Mobile menu toggle ---------- */
 .nav-actions{display:flex;align-items:center;gap:.5rem}
@@ -315,6 +326,12 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
 .legal p{font-size:.74rem;color:var(--muted-dark);line-height:1.6;max-width:64ch}
 .legal-marks{display:flex;gap:1rem;align-items:center;color:var(--muted-dark)}
 @media (max-width:56rem){.foot-grid{grid-template-columns:1fr 1fr}}
+
+/* Mobile: header is in normal flow, so the hero needs less top clearance */
+@media (max-width:48rem){
+  .hero{padding-top:2.75rem;padding-bottom:3rem;min-height:calc(100svh - 5rem)}
+  #selling-guide{scroll-margin-top:1.5rem}
+}
 
 /* ---------- Reduced motion: a finished still (§1.5) ---------- */
 @media (prefers-reduced-motion:reduce){
