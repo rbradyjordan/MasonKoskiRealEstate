@@ -48,7 +48,9 @@ p{max-width:56ch;text-wrap:pretty}
 .muted{color:var(--muted)}
 .nav{position:fixed;top:1rem;left:50%;margin-left:calc(var(--shell)/-2);width:var(--shell);z-index:70;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.6rem .6rem .6rem 1.2rem;border-radius:999px;background:rgba(247,242,233,.86);-webkit-backdrop-filter:blur(14px) saturate(1.15);backdrop-filter:blur(14px) saturate(1.15);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 -1px 0 rgba(36,29,20,.12),0 12px 32px rgba(25,19,9,.16);color:var(--ink)}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
-.nav-logo img{height:2.35rem;width:auto;mix-blend-mode:multiply}
+.wordmark{display:inline-flex;flex-direction:column;align-items:center;line-height:1;font-family:"Source Serif 4",Georgia,serif}
+.wm-name{font-weight:700;font-size:1.12rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.wm-sub{font-weight:600;font-size:.585rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.36rem;text-align:center;white-space:nowrap}
 .nav-links{display:flex;gap:1.5rem;list-style:none}
 .nav-links a{text-decoration:none;position:relative;padding-block:.35rem;color:var(--ink);font-weight:700}
 .nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--blue-deep);transition:right .3s var(--ease-out)}
@@ -120,6 +122,10 @@ section{padding-block:var(--section-y)}
 .chapter p:last-child{margin-bottom:0}
 .chapter .aside{color:var(--muted);font-size:var(--step--1);border-left:2px solid var(--blue-deep);padding-left:1rem;max-width:48ch}
 @media (max-width:44rem){.chapter{grid-template-columns:2.6rem 1fr}}
+.storybody{margin-top:1.6rem}
+.storybody p{font-size:var(--step-1);line-height:1.62;margin-bottom:1.3rem;max-width:62ch;color:var(--ink)}
+.storybody p:last-child{margin-bottom:0}
+.storylede{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-weight:400;font-size:var(--step-3);line-height:1.2;color:var(--blue-deep);margin:.4rem 0 0;text-wrap:balance;max-width:24ch}
 
 /* ---------- Divider band between hero and chapters ---------- */
 .band{background:var(--blue-deep);color:var(--paper);text-align:center;padding:1.15rem 1rem}
@@ -150,7 +156,8 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
 .foot-grid ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
 .foot-grid a{text-decoration:none;color:var(--paper);font-size:var(--step--1)}
 .foot-grid a:hover{color:var(--blue)}
-.foot-logo img{height:4.4rem;width:auto;filter:invert(1);mix-blend-mode:screen}
+.foot-logo .wm-name{color:var(--paper);font-size:1.7rem;letter-spacing:.05em}
+.foot-logo .wm-sub{color:var(--muted-dark);font-size:.82rem;letter-spacing:.06em;margin-top:.5rem}
 .legal{padding-top:2rem;display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-start}
 .legal p{font-size:.74rem;color:var(--muted-dark);line-height:1.6;max-width:64ch}
 .legal-marks{display:flex;gap:1rem;align-items:center;color:var(--muted-dark)}
@@ -169,18 +176,20 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
 <div class="grain" aria-hidden="true"></div>
 
 <nav class="nav" aria-label="Primary">
-  <a class="nav-logo" href="%%HOMELINK%%">
-    <img src="data:image/png;base64,%%LOGO%%" alt="Mason Koski, Atlanta Realtor">
+  <a class="nav-logo" href="%%HOMELINK%%" aria-label="Mason Koski, Atlanta Realtor">
+    <span class="wordmark" aria-hidden="true">
+      <span class="wm-name">Mason Koski</span>
+      <span class="wm-sub">Atlanta Realtor</span>
+    </span>
   </a>
   <ul class="nav-links brandcaps">
     <li><a href="%%HOMELINK%%#buy">Buy</a></li>
     <li><a href="%%HOMELINK%%#sell">Sell</a></li>
     <li><a href="%%HOMELINK%%#neighborhoods">Neighborhoods</a></li>
-    <li><a href="#vamo">VAMO</a></li>
     <li><a href="#top" aria-current="page">My Story</a></li>
   </ul>
   <div class="nav-actions">
-    <a class="btn btn-blue" href="%%HOMELINK%%#contact">Let’s talk</a>
+    <a class="btn btn-blue" href="%%HOMELINK%%#contact" style="text-transform:uppercase;letter-spacing:.08em">Let’s connect</a>
     <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
@@ -191,7 +200,6 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
     <li><a href="%%HOMELINK%%#buy">Buy</a></li>
     <li><a href="%%HOMELINK%%#sell">Sell</a></li>
     <li><a href="%%HOMELINK%%#neighborhoods">Neighborhoods</a></li>
-    <li><a href="#vamo">VAMO</a></li>
     <li><a href="#top" aria-current="page">My Story</a></li>
   </ul>
 </div>
@@ -207,7 +215,7 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
         <span class="sr-only">I’ve been learning this city my whole life.</span>
         <span aria-hidden="true" id="story-words">I’ve been <em>learning</em> this city my whole life.</span>
       </h1>
-      <p class="shero-sub hload" style="--d:.9s">Decatur raised, Athens educated, Virginia-Highland based. This is how I got here.</p>
+      <p class="shero-sub hload" style="--d:.9s">Atlanta raised. This is how I got here.</p>
     </div>
     <div class="sportrait hload" style="--d:.35s">
       <div class="frame">
@@ -217,53 +225,19 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
   </div>
 </header>
 
-<!-- ============ DIVIDER ============ -->
-<div class="band" aria-hidden="true">
-  <span>Decatur → Athens → Virginia-Highland → VAMO</span>
-</div>
-
-<!-- ============ CHAPTERS ============ -->
-<section class="chapters" aria-label="The story, in order">
+<!-- ============ ABOUT ============ -->
+<section class="chapters" aria-label="About Mason">
   <div class="shell">
-
-    <article class="chapter cas-group">
-      <div class="ch-marker" aria-hidden="true"><span class="n">i.</span><span class="stem"></span></div>
-      <div>
-        <span class="place cas" style="--i:0">Decatur</span>
-        <h2 class="cas" style="--i:1">Raised where the square is the whole social calendar.</h2>
-        <p class="cas" style="--i:2">I grew up in Decatur: festivals on the square, a city small enough to walk and big enough to matter. Before I ever had a license to sell houses here, I knew which streets flood, which shortcuts actually work, and where to be on a Friday night.</p>
-        <p class="aside cas" style="--i:3">My office today is on West Ponce, about a mile from where I grew up. That is not an accident.</p>
+    <div class="cas-group" style="max-width:64rem">
+      <span class="eyebrow cas" style="--i:0">The short version</span>
+      <p class="storylede cas" style="--i:1">Atlanta native. Real estate runs in the family.</p>
+      <div class="storybody cas" style="--i:2">
+        <p>Mason Koski is an Atlanta native with deep roots in the city and a strong understanding of its diverse neighborhoods. Her enthusiasm for real estate runs in the family, inspired by a lineage of industry professionals. Their dedication sparked her own interest and shaped her commitment to providing personalized support, local insight, and clear communication every step of the way.</p>
+        <p>With a strong start to her real estate career, Mason has sold millions in volume, but more importantly, helped many clients, family, and friends through the home-buying and selling process.</p>
+        <p>As a magna cum laude graduate of the University of Georgia with a degree in Health Promotion, Mason brings a holistic, client-focused approach to the home-buying and selling journey. Known for her outgoing yet calm demeanor, she strives to make each transaction smooth, stress-free, and enjoyable. Outside of real estate, Mason enjoys staying active and lives in Atlanta’s Virginia-Highland neighborhood with her dachshund.</p>
+        <p><a href="https://voyageatl.com/interview/community-highlights-meet-mason-koski-of-mason-koski-real-estate-vamo-rising-professionals/" target="_blank" rel="noopener" style="color:var(--blue-deep);font-weight:700;text-underline-offset:.3em">Read about my community highlights →</a></p>
       </div>
-    </article>
-
-    <article class="chapter cas-group">
-      <div class="ch-marker" aria-hidden="true"><span class="n">ii.</span><span class="stem"></span></div>
-      <div>
-        <span class="place cas" style="--i:0">Athens</span>
-        <h2 class="cas" style="--i:1">UGA, magna cum laude.</h2>
-        <p class="cas" style="--i:2">Athens taught me something I still build on: a place feels like yours when the people in it know you. I studied Health Promotion, graduated magna cum laude, and came home to Atlanta wanting to help people feel at home somewhere.</p>
-      </div>
-    </article>
-
-    <article class="chapter cas-group">
-      <div class="ch-marker" aria-hidden="true"><span class="n">iii.</span><span class="stem"></span></div>
-      <div>
-        <span class="place cas" style="--i:0">Virginia-Highland</span>
-        <h2 class="cas" style="--i:1">Home is a bungalow street I walk twice a day.</h2>
-        <p class="cas" style="--i:2">These days I live in Virginia-Highland, and my market research happens on foot. I walk the same streets every day, past the 1920s bungalows, the porches, and the for-sale signs that go up and come down. When I tell you what a street is really like, it’s because I was on it this morning.</p>
-      </div>
-    </article>
-
-    <article class="chapter cas-group" id="vamo">
-      <div class="ch-marker" aria-hidden="true"><span class="n">iv.</span><span class="stem"></span></div>
-      <div>
-        <span class="place cas" style="--i:0">VAMO</span>
-        <h2 class="cas" style="--i:1">Fifty name tags. Seventy people. The rest is momentum.</h2>
-        <p class="cas" style="--i:2">Atlanta’s networking scene felt corporate and impersonal, so eventually I stopped waiting for someone else to fix it. I printed flyers, talked local businesses into giveaways, and bought 50 name tags hoping ten friends might show up. Seventy people came. VAMO Rising Professionals has been growing ever since: rooftop DJs, headshot stations, and a monthly room full of people figuring out this city together.</p>
-        <p class="aside cas" style="--i:3">VAMO isn’t a sales funnel, and it never will be. It’s the part of my week that would exist even if it never sold a single house. <a href="%%HOMELINK%%#vamo" style="color:var(--blue-deep);font-weight:700">Come to the next one →</a></p>
-      </div>
-    </article>
-
+    </div>
   </div>
 </section>
 
@@ -271,11 +245,11 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
 <section class="close-cta cas-group">
   <div class="shell">
     <span class="eyebrow cas" style="--i:0">Get in touch</span>
-    <h2 class="display cas" style="--i:1">Let’s talk about your first move.</h2>
+    <h2 class="display cas" style="--i:1">Let’s talk about your move.</h2>
     <p class="cas" style="--i:2">Whether you’re two years out or two weeks out, I’m glad to talk it through.</p>
     <div class="row cas" style="--i:3">
-      <a class="btn btn-blue" href="%%HOMELINK%%#doors">Start where you are</a>
-      <a class="btn btn-line-ink" href="#vamo">Come to VAMO</a>
+      <a class="btn btn-blue" href="%%HOMELINK%%#doors">See how I can help</a>
+      <a class="btn btn-line-ink" href="%%HOMELINK%%#contact">Contact Mason</a>
     </div>
   </div>
 </section>
@@ -287,15 +261,18 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
   <div class="shell">
     <div class="foot-grid">
       <div class="foot-logo">
-        <img src="data:image/png;base64,%%LOGO%%" alt="Mason Koski, Atlanta Realtor">
+        <span class="wordmark">
+          <span class="wm-name">Mason Koski</span>
+          <span class="wm-sub">Atlanta Realtor</span>
+        </span>
       </div>
       <div>
-        <h4>Buy</h4>
-        <ul><li><a href="%%HOMELINK%%#buy">The 10-step process</a></li><li><a href="%%HOMELINK%%#honest">How agents get paid</a></li><li><a href="%%HOMELINK%%#doors">Readiness check</a></li></ul>
+        <h4>Work with me</h4>
+        <ul><li><a href="%%HOMELINK%%#buy">Buying</a></li><li><a href="%%HOMELINK%%#sell">Selling</a></li></ul>
       </div>
       <div>
         <h4>Explore</h4>
-        <ul><li><a href="%%HOMELINK%%#neighborhoods">Neighborhoods</a></li><li><a href="%%HOMELINK%%#journal">Journal</a></li><li><a href="%%HOMELINK%%#vamo">VAMO</a></li><li><a href="#top">My Story</a></li></ul>
+        <ul><li><a href="%%HOMELINK%%#neighborhoods">Where I Work</a></li><li><a href="%%HOMELINK%%#network">The Network</a></li><li><a href="#top">My Story</a></li></ul>
       </div>
       <div>
         <h4>Connect</h4>
@@ -303,7 +280,7 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
       </div>
     </div>
     <div class="legal">
-      <p>Mason Koski, REALTOR® · Keller Williams Realty Metro Atlanta · 101 W Ponce de Leon Ave Suite 200, Decatur, GA 30030. Each Keller Williams office is independently owned and operated. Georgia license number and broker information displayed per GREC advertising rules; final details pending broker verification. This is a design draft; all facts subject to the Phase&nbsp;0 verification pass.</p>
+      <p>Mason Koski, REALTOR® · Keller Williams Realty Metro Atlanta · 101 W Ponce de Leon Ave Suite 200, Decatur, GA 30030. Each Keller Williams office is independently owned and operated.</p>
       <div class="legal-marks" aria-label="Equal Housing Opportunity mark">
         <svg width="34" height="34" viewBox="0 0 24 24" role="img" aria-label="Equal Housing Opportunity" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3 3 10h2v10h14V10h2L12 3z"/><path d="M8 13h8M8 16h8"/></svg>
         <span class="brandcaps" style="font-size:.64rem">Equal Housing<br>Opportunity</span>
@@ -315,6 +292,25 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
 <script>
 (function(){
   var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- Wordmark: track "Atlanta Realtor" to the exact width of "Mason Koski" --- */
+  function fitWordmark(wm){
+    var name = wm.querySelector('.wm-name'), sub = wm.querySelector('.wm-sub');
+    if (!name || !sub) return;
+    sub.style.letterSpacing = '0px'; sub.style.marginRight = '0px';
+    var target = name.getBoundingClientRect().width;
+    var natural = sub.getBoundingClientRect().width;
+    var n = sub.textContent.replace(/\s/g,'').length;
+    if (n < 2 || target <= natural) return;
+    var ls = (target - natural) / n;
+    sub.style.letterSpacing = ls + 'px';
+    sub.style.marginRight = (-ls) + 'px';
+  }
+  function fitAll(){ document.querySelectorAll('.wordmark').forEach(fitWordmark); }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+  fitAll();
+  addEventListener('resize', fitAll);
+
 
   var navToggle = document.querySelector('.nav-toggle');
   var mobileMenu = document.getElementById('mobile-menu');

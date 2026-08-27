@@ -86,7 +86,9 @@ p{max-width:56ch;text-wrap:pretty}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 -1px 0 rgba(36,29,20,.12),0 12px 32px rgba(25,19,9,.16);
   color:var(--ink)}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
-.nav-logo img{height:2.35rem;width:auto;mix-blend-mode:multiply}
+.wordmark{display:inline-flex;flex-direction:column;align-items:center;line-height:1;font-family:"Source Serif 4",Georgia,serif}
+.wm-name{font-weight:700;font-size:1.12rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.wm-sub{font-weight:600;font-size:.585rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.36rem;text-align:center;white-space:nowrap}
 .nav-links{display:flex;gap:1.5rem;list-style:none}
 .nav-links a{text-decoration:none;position:relative;padding-block:.35rem;color:var(--ink);font-weight:700}
 .nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--blue-deep);transition:right .3s var(--ease-out)}
@@ -178,7 +180,7 @@ section{padding-block:var(--section-y)}
   transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out),opacity .7s var(--ease-out);will-change:transform}
 .pillar:hover{transform:translateY(-8px);box-shadow:0 20px 44px rgba(25,19,9,.13)}
 .pillar .glyph{width:3.2rem;height:3.2rem;border-radius:999px;background:var(--blue-deep);color:var(--paper);display:grid;place-items:center;font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-size:1.35rem}
-.pillar h3{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:var(--step-2);line-height:1.12;text-wrap:balance}
+.pillar h3{font-family:"Source Serif 4",Georgia,serif;font-weight:700;font-size:var(--step-0);letter-spacing:.13em;text-transform:uppercase;line-height:1.2;text-wrap:balance}
 .pillar p{font-size:var(--step--1);color:var(--muted);line-height:1.6}
 .pillar a{color:var(--blue-deep);font-weight:700;text-decoration:none;font-size:var(--step--1);margin-top:auto}
 .pillar a:hover{text-decoration:underline;text-underline-offset:.35em}
@@ -307,7 +309,8 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
 .foot-grid a{text-decoration:none;color:var(--paper);font-size:var(--step--1)}
 .foot-grid a:hover{color:var(--blue)}
 /* real wordmark, inverted then screened so its white box vanishes on ink */
-.foot-logo img{height:4.4rem;width:auto;filter:invert(1);mix-blend-mode:screen}
+.foot-logo .wm-name{color:var(--paper);font-size:1.7rem;letter-spacing:.05em}
+.foot-logo .wm-sub{color:var(--muted-dark);font-size:.82rem;letter-spacing:.06em;margin-top:.5rem}
 .legal{padding-top:2rem;display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-start}
 .legal p{font-size:.74rem;color:var(--muted-dark);line-height:1.6;max-width:64ch}
 .legal-marks{display:flex;gap:1rem;align-items:center;color:var(--muted-dark)}
@@ -330,8 +333,11 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
 <div class="grain" aria-hidden="true"></div>
 
 <nav class="nav" aria-label="Primary">
-  <a class="nav-logo" href="#top">
-    <img src="data:image/png;base64,%%LOGO%%" alt="Mason Koski, Atlanta Realtor">
+  <a class="nav-logo" href="#top" aria-label="Mason Koski, Atlanta Realtor">
+    <span class="wordmark" aria-hidden="true">
+      <span class="wm-name">Mason Koski</span>
+      <span class="wm-sub">Atlanta Realtor</span>
+    </span>
   </a>
   <ul class="nav-links brandcaps">
     <li><a href="#buy">Buy</a></li>
@@ -340,7 +346,7 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
     <li><a href="%%STORYLINK%%">My Story</a></li>
   </ul>
   <div class="nav-actions">
-    <a class="btn btn-blue" href="#contact">Let’s talk</a>
+    <a class="btn btn-blue" href="#contact" style="text-transform:uppercase;letter-spacing:.08em">Let’s connect</a>
     <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
@@ -361,14 +367,14 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
 <header class="hero" id="top">
   <div class="shell hero-grid">
     <div>
-      <span class="eyebrow hload" style="--d:.15s">Atlanta REALTOR® · Keller Williams Metro Atlanta</span>
+      <span class="eyebrow hload" style="--d:.15s">Atlanta REALTOR® · Keller Williams Realty Metro Atlanta</span>
       <h1 class="display" id="hero-h">
         <span class="sr-only">I don’t just know the streets of Atlanta. I know the people who live on them.</span>
         <span aria-hidden="true" id="hero-words">I don’t just know the <em>streets</em> of Atlanta. I know the <em>people</em> who live on them.</span>
       </h1>
-      <p class="hero-sub hload" style="--d:.9s">Real estate for people making their first move in Atlanta. Clear answers, a straightforward process, and no pressure to be further along than you are.</p>
+      <p class="hero-sub hload" style="--d:.9s">Professional real estate services for people making their move in Atlanta.</p>
       <div class="hero-cta hload" style="--d:1.1s">
-        <a class="btn btn-blue" href="#doors">Start where you are</a>
+        <a class="btn btn-blue" href="#doors">See how I can help</a>
         <a class="btn btn-line-ink" href="%%STORYLINK%%">My story</a>
       </div>
       <a class="hero-trust hload" style="--d:1.25s" href="#reviews">
@@ -380,7 +386,7 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
       <div class="portrait">
         <img src="data:image/jpeg;base64,%%PORTRAIT%%" alt="Mason Koski, smiling, in a blue and white toile dress" width="1100" height="1649">
       </div>
-      <span class="portrait-cap">Decatur raised · <b>Va-Hi resident</b></span>
+      <span class="portrait-cap">Atlanta raised · <b>Local Realtor</b></span>
     </div>
   </div>
 </header>
@@ -389,10 +395,10 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <ul>
-      <li>Virginia-Highland</li><li>Morningside</li><li>Decatur</li><li>Old Fourth Ward</li><li>Inman Park</li><li>Kirkwood</li><li>Grant Park</li><li>Candler Park</li><li>Poncey-Highland</li><li>East Lake</li><li>Edgewood</li><li>Reynoldstown</li><li>Roswell</li><li>Johns Creek</li><li>Alpharetta</li>
+      <li>Virginia-Highland</li><li>Midtown</li><li>Buckhead</li><li>Decatur</li><li>Old Fourth Ward</li><li>Inman Park</li><li>Sandy Springs</li><li>Kirkwood</li><li>Grant Park</li><li>Smyrna</li><li>Candler Park</li><li>Poncey-Highland</li><li>East Lake</li><li>Edgewood</li><li>Reynoldstown</li><li>Roswell</li><li>Johns Creek</li><li>Alpharetta</li>
     </ul>
     <ul>
-      <li>Virginia-Highland</li><li>Morningside</li><li>Decatur</li><li>Old Fourth Ward</li><li>Inman Park</li><li>Kirkwood</li><li>Grant Park</li><li>Candler Park</li><li>Poncey-Highland</li><li>East Lake</li><li>Edgewood</li><li>Reynoldstown</li><li>Roswell</li><li>Johns Creek</li><li>Alpharetta</li>
+      <li>Virginia-Highland</li><li>Midtown</li><li>Buckhead</li><li>Decatur</li><li>Old Fourth Ward</li><li>Inman Park</li><li>Sandy Springs</li><li>Kirkwood</li><li>Grant Park</li><li>Smyrna</li><li>Candler Park</li><li>Poncey-Highland</li><li>East Lake</li><li>Edgewood</li><li>Reynoldstown</li><li>Roswell</li><li>Johns Creek</li><li>Alpharetta</li>
     </ul>
   </div>
 </div>
@@ -401,27 +407,24 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
 <section class="on-light" id="about" aria-labelledby="pillars-h">
   <div class="shell">
     <div class="sec-head cas-group">
-      <span class="eyebrow cas" style="--i:0">Why work with me</span>
-      <h2 class="display cas" style="--i:1" id="pillars-h">Three things worth knowing.</h2>
+      <span class="eyebrow cas" style="--i:0" id="pillars-h">Why work with me</span>
     </div>
     <div class="pillars cas-group">
       <article class="pillar cas" style="--i:0">
         <span class="glyph" aria-hidden="true">i</span>
-        <h3>I built the room.</h3>
-        <p>I founded VAMO Rising Professionals, a monthly networking event for Atlanta professionals, because the existing scene felt corporate and impersonal. It now fills a room every month.</p>
-        <a href="%%STORYLINK%%#vamo">The VAMO story →</a>
+        <h3>Atlanta Native</h3>
+        <p>Mason grew up in Decatur and has lived in Atlanta almost her whole life. You’ll receive local insights and expertise.</p>
+        <a href="%%STORYLINK%%">More about Mason →</a>
       </article>
       <article class="pillar cas" style="--i:1">
         <span class="glyph" aria-hidden="true">ii</span>
-        <h3>Decatur raised, Va-Hi resident.</h3>
-        <p>I grew up in Decatur, graduated magna cum laude from UGA, and live in Virginia-Highland today. My read on these neighborhoods is current, because I am in them every day.</p>
-        <a href="%%STORYLINK%%">Read my story →</a>
+        <h3>Personalized Service</h3>
+        <p>The highest service is top priority. Mason will treat you like her only client and advocate on your behalf.</p>
       </article>
       <article class="pillar cas" style="--i:2">
         <span class="glyph" aria-hidden="true">iii</span>
-        <h3>I make the process seamless.</h3>
-        <p>From the first conversation to closing day, you get straight answers on commission, closing costs, and down payment assistance, and honest guidance if a house is not the right move for you.</p>
-        <a href="#honest">The honest answers →</a>
+        <h3>Real Estate Experience</h3>
+        <p>Mason’s experience in the industry, along with her brokerage’s support, will carry you through the process with ease.</p>
       </article>
     </div>
   </div>
@@ -432,64 +435,46 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
   <div class="shell">
     <div class="sec-head cas-group">
       <span class="eyebrow cas" style="--i:0">Where I work</span>
-      <h2 class="display cas" style="--i:1" id="hoods-h">The neighborhoods I know best.</h2>
-      <p class="muted cas" style="--i:2">Practical guides to each area, intown and beyond: housing stock, what your budget really buys, and who it suits.</p>
+      <h2 class="display cas" style="--i:1" id="hoods-h">I work across all of metro Atlanta.</h2>
+      <p class="muted cas" style="--i:2">From intown bungalows to the northern suburbs, I help buyers and sellers throughout the metro. A few of the areas I know well:</p>
     </div>
     <div class="hoods cas-group">
       <a class="hood cas" style="--i:0" href="#neighborhoods">
         <span class="tag">Home turf</span>
         <h3>Virginia-Highland</h3>
-        <p>1920s bungalows, walkable commercial villages, and the reason I never leave. My own zip code.</p>
-        <span class="go">Read the guide →</span>
-      </a>
+        <p>1920s bungalows, walkable commercial villages, and the reason I never leave. My own zip code.</p>      </a>
       <a class="hood cas" style="--i:1" href="#neighborhoods">
-        <span class="tag">Home turf</span>
-        <h3>Morningside</h3>
-        <p>Quiet canopy streets a five-minute walk from the noise. Craftsman details and long porches.</p>
-        <span class="go">Read the guide →</span>
-      </a>
+        <span class="tag">Intown</span>
+        <h3>Midtown</h3>
+        <p>High-rise condos, Piedmont Park at the doorstep, and the most walkable address in the city.</p>      </a>
       <a class="hood cas" style="--i:2" href="#neighborhoods">
         <span class="tag">Where I grew up</span>
         <h3>Decatur</h3>
-        <p>The square, the festivals, the small-city feel inside the big one. I can vouch for it personally.</p>
-        <span class="go">Read the guide →</span>
-      </a>
+        <p>The square, the festivals, the small-city feel inside the big one. I can vouch for it personally.</p>      </a>
       <a class="hood cas" style="--i:1" href="#neighborhoods">
         <span class="tag">Beltline</span>
         <h3>Old Fourth Ward</h3>
-        <p>Eastside Trail energy, new builds beside historic shotguns, and condos with real walkability.</p>
-        <span class="go">Read the guide →</span>
-      </a>
+        <p>Eastside Trail energy, new builds beside historic shotguns, and condos with real walkability.</p>      </a>
       <a class="hood cas" style="--i:2" href="#neighborhoods">
         <span class="tag">Historic</span>
         <h3>Inman Park</h3>
-        <p>Victorian showpieces and the festival that takes over the whole neighborhood every spring.</p>
-        <span class="go">Read the guide →</span>
-      </a>
+        <p>Victorian showpieces and the festival that takes over the whole neighborhood every spring.</p>      </a>
       <a class="hood cas" style="--i:3" href="#neighborhoods">
         <span class="tag">Southside</span>
         <h3>Grant Park</h3>
-        <p>The park, the zoo, and some of intown’s best-value historic housing stock, street after street.</p>
-        <span class="go">Read the guide →</span>
-      </a>
+        <p>The park, the zoo, and some of intown’s best-value historic housing stock, street after street.</p>      </a>
       <a class="hood cas" style="--i:0" href="#neighborhoods">
         <span class="tag">North Fulton</span>
         <h3>Roswell</h3>
-        <p>A walkable historic square, river trails along the Chattahoochee, and more room to spread out than intown allows.</p>
-        <span class="go">Read the guide →</span>
-      </a>
+        <p>A walkable historic square, river trails along the Chattahoochee, and more room to spread out than intown allows.</p>      </a>
       <a class="hood cas" style="--i:1" href="#neighborhoods">
         <span class="tag">North Fulton</span>
         <h3>Johns Creek</h3>
-        <p>Newer construction, cul-de-sac streets, and easy access to the Technology Corridor.</p>
-        <span class="go">Read the guide →</span>
-      </a>
+        <p>Newer construction, cul-de-sac streets, and easy access to the Technology Corridor.</p>      </a>
       <a class="hood cas" style="--i:2" href="#neighborhoods">
         <span class="tag">North Fulton</span>
         <h3>Alpharetta</h3>
-        <p>Avalon’s shops and restaurants, corporate offices nearby, and subdivisions built for space.</p>
-        <span class="go">Read the guide →</span>
-      </a>
+        <p>Avalon’s shops and restaurants, corporate offices nearby, and subdivisions built for space.</p>      </a>
     </div>
   </div>
 </section>
@@ -498,27 +483,27 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
 <section class="on-light" id="doors" aria-labelledby="doors-h">
   <div class="shell">
     <div class="sec-head cas-group">
-      <span class="eyebrow cas" style="--i:0">Start here</span>
-      <h2 class="display cas" style="--i:1" id="doors-h">Wherever you are is the right place to start.</h2>
+      <span class="eyebrow cas" style="--i:0">Thinking of making a move?</span>
+      <h2 class="display cas" style="--i:1" id="doors-h">Buying, selling, or still deciding.</h2>
     </div>
     <div class="doors cas-group">
       <a class="door door-1 cas" style="--i:0" href="#contact" id="buy">
-        <span class="k" aria-hidden="true">Most people start here</span>
-        <h3>I’m just starting to think about it.</h3>
-        <p>Take the readiness check. You’ll get a realistic price range, the cash you’d actually need, and a 6-, 12-, or 24-month plan. “Not ready yet” is a perfectly good answer.</p>
-        <span class="go">Check my readiness →</span>
+        <span class="k" aria-hidden="true">For buyers</span>
+        <h3>I’m buying.</h3>
+        <p>Pre-approval guidance, a search built around your criteria, private and off-market showings through my agent network, and an offer strategy that wins without overpaying.</p>
+        <span class="go">How I help buyers →</span>
       </a>
-      <a class="door door-2 cas" style="--i:1" href="#contact">
-        <span class="k" aria-hidden="true">Pre-approved, or close</span>
-        <h3>I’m ready to look.</h3>
-        <p>Search intown listings, get the 10-step process, meet the lenders I trust by name, and let’s go see some houses.</p>
-        <span class="go">Start the search →</span>
-      </a>
-      <a class="door door-3 cas" style="--i:2" href="#contact" id="sell">
-        <span class="k" aria-hidden="true">Outgrowing your first place</span>
-        <h3>I need to sell first.</h3>
-        <p>See exactly how I market a listing: photography, film, and a listing page built to stand out from the standard card grid.</p>
+      <a class="door door-2 cas" style="--i:1" href="#contact" id="sell">
+        <span class="k" aria-hidden="true">For sellers</span>
+        <h3>I’m selling.</h3>
+        <p>Pricing from real comps, a full prep and staging plan, professional photography, and marketing that reaches the right buyers and the agents who represent them.</p>
         <span class="go">How I sell homes →</span>
+      </a>
+      <a class="door door-3 cas" style="--i:2" href="#contact">
+        <span class="k" aria-hidden="true">Still deciding</span>
+        <h3>I’m not sure yet.</h3>
+        <p>Let’s talk through timing, numbers, and what your options actually look like. No pressure and no obligation.</p>
+        <span class="go">Let’s connect →</span>
       </a>
     </div>
   </div>
@@ -552,100 +537,70 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
         <footer><cite>Jon W.</cite><small>Sold a single-family home, Johns Creek, 2026</small></footer>
       </blockquote>
     </div>
-    <div class="rev-stats cas-group" role="list" aria-label="Sales record from Zillow">
-      <div class="cas" style="--i:0" role="listitem"><strong data-count="12">0</strong><span>Total sales</span></div>
-      <div class="cas" style="--i:1" role="listitem"><strong data-count="10">0</strong><span>In the last 12 months</span></div>
-      <div class="cas" style="--i:2" role="listitem"><strong>$230K–$665K</strong><span>Price range</span></div>
-      <div class="cas" style="--i:3" role="listitem"><strong>$394K</strong><span>Average sale price</span></div>
-    </div>
-    <p class="rev-src">All reviews and figures from Mason’s public Zillow profile, verified August 2026.</p>
+    <p class="rev-src">All reviews from Mason’s public Zillow profile.</p>
   </div>
 </section>
 
-<!-- ============ HONEST ANSWERS ============ -->
-<section class="on-light-alt" id="honest" aria-labelledby="honest-h">
-  <div class="shell">
-    <div class="honest cas-group">
-      <div class="cas" style="--i:0">
-        <span class="eyebrow">The honest answers</span>
-        <blockquote id="honest-h" style="margin-top:1.2rem">“Does the seller pay my agent?” <em>Not exactly.</em> I would rather explain that than dodge it.</blockquote>
-        <p class="src">Commission, closing costs, earnest money, down payment assistance: the questions people search at 11pm, answered in plain English before you sign anything.</p>
-      </div>
-      <div class="qa cas" style="--i:2">
-        <details>
-          <summary>Who actually pays my buyer’s agent?</summary>
-          <p class="a">Compensation is fully negotiable and seller-paid commission isn’t guaranteed anymore. Your buyer representation agreement spells out exactly what gets paid, by whom, before we look at a single house.</p>
-        </details>
-        <details>
-          <summary>Do I really need 20% down?</summary>
-          <p class="a">No. Programs exist with as little as 3% down, and Georgia down payment assistance can cover a meaningful chunk of the rest. What you need depends on the program, and we would figure that out together.</p>
-        </details>
-        <details>
-          <summary>What do closing costs actually run?</summary>
-          <p class="a">Plan on roughly 3 to 4% of your loan amount on top of the down payment, and some of it is negotiable to the seller. I will walk you through the real line items, not a vague estimate.</p>
-        </details>
-        <details>
-          <summary>What if you think I shouldn’t buy?</summary>
-          <p class="a">Then I will tell you that. A client who waits a year and buys the right house is a better outcome than one who rushes into the wrong one.</p>
-        </details>
-      </div>
-    </div>
-
-    <div class="market cas-group" role="list" aria-label="Atlanta market snapshot">
-      <div class="stat cas" style="--i:0" role="listitem"><strong>#<span data-count="4">0</span></strong><span>Atlanta’s national rank among the 50 largest metros for first-time buyers</span></div>
-      <div class="stat cas" style="--i:1" role="listitem"><strong><span data-count="5.4">0</span></strong><span>months of supply in Q1 2026, up from 3.1 a year earlier. Buyers have leverage again</span></div>
-      <div class="stat cas" style="--i:2" role="listitem"><strong>~<span data-count="30">0</span></strong><span>days on market for well-priced intown homes. Local knowledge still matters</span></div>
-    </div>
-    <p class="market-src">Sources: Zillow first-time buyer rankings, 2026; regional MLS supply data, Q1 2026. Figures verified quarterly. Last reviewed August 2026.</p>
-  </div>
-</section>
-
-<!-- ============ JOURNAL ============ -->
-<section class="on-light" id="journal" aria-labelledby="journal-h">
+<!-- ============ THE NETWORK ============ -->
+<section class="on-light-alt" id="network" aria-labelledby="network-h">
   <div class="shell">
     <div class="sec-head cas-group">
-      <span class="eyebrow cas" style="--i:0">The journal</span>
-      <h2 class="display cas" style="--i:1" id="journal-h">Notes from the ground.</h2>
+      <span class="eyebrow cas" style="--i:0">The network</span>
+      <h2 class="display cas" style="--i:1" id="network-h">The people I bring to every deal.</h2>
     </div>
-    <div class="posts cas-group">
-      <a class="post cas" style="--i:0" href="#journal">
-        <time datetime="2026-08">August 2026</time>
-        <h3>Down payment assistance in Atlanta, without the affiliate spin</h3>
-        <p>Georgia Dream has multiple tracks with different income limits, and much of what ranks online is out of date. Here is what is verified, and when.</p>
-        <span class="go">Read →</span>
-      </a>
-      <a class="post cas" style="--i:1" href="#journal">
-        <time datetime="2026-08">August 2026</time>
-        <h3>What $400K buys in six intown neighborhoods right now</h3>
-        <p>Same budget, six very different houses. A walking tour of what the number actually gets you, street by street.</p>
-        <span class="go">Read →</span>
-      </a>
-      <a class="post cas" style="--i:2" href="#journal">
-        <time datetime="2026-07">July 2026</time>
-        <h3>Why your pre-approval isn’t a budget</h3>
-        <p>The lender’s ceiling and your comfortable monthly payment are two different numbers. Confusing them is how people end up house-poor.</p>
-        <span class="go">Read →</span>
-      </a>
+    <div class="pillars cas-group">
+      <article class="pillar cas" style="--i:0">
+        <span class="glyph" aria-hidden="true">i</span>
+        <h3>Agent Relationships</h3>
+        <p>Real relationships with other agents mean I hear about homes before they list. My buyers have landed houses that never reached the open market.</p>
+      </article>
+      <article class="pillar cas" style="--i:1">
+        <span class="glyph" aria-hidden="true">ii</span>
+        <h3>Inspectors &amp; Trades</h3>
+        <p>Inspectors, contractors, and structural engineers I trust to get in the crawlspace and tell you the truth about a house while the due diligence clock is running.</p>
+      </article>
+      <article class="pillar cas" style="--i:2">
+        <span class="glyph" aria-hidden="true">iii</span>
+        <h3>Attorneys &amp; Lenders</h3>
+        <p>Closing attorneys and lenders who answer the phone, hit their deadlines, and have closed with me enough times to know exactly how I work.</p>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- ============ GUIDE CAPTURE ============ -->
 <section class="on-dark" id="contact" aria-labelledby="guide-h">
-  <div class="shell guide cas-group">
-    <div class="cas" style="--i:0">
-      <span class="eyebrow">The Home Buying Guide</span>
-      <h2 class="display" id="guide-h" style="margin-top:1rem">The whole process, <em>in plain English.</em></h2>
-      <p>The full Georgia buying process: due diligence windows, earnest money, closing attorneys, and what it all costs. Written for someone doing this for the first time.</p>
+  <div class="shell">
+    <div class="guide cas-group">
+      <div class="cas" style="--i:0">
+        <span class="eyebrow">The Home Buying Guide</span>
+        <h2 class="display" id="guide-h" style="margin-top:1rem">New to the home <em>buying process?</em></h2>
+        <p>The full Georgia buying process: due diligence windows, earnest money, closing attorneys, and what it all costs, written in plain English.</p>
+      </div>
+      <form class="guide-form cas" style="--i:2" action="mailto:masonkoski@kw.com" method="get">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="subject" placeholder="Your name" autocomplete="name">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="body" type="email" placeholder="you@example.com" autocomplete="email" required>
+        <button class="btn btn-cream" type="submit" style="border:0;cursor:pointer;font-family:inherit">Send me the guide</button>
+        <p class="consent">By requesting the guide you agree to receive occasional email from Mason Koski Real Estate. No spam, unsubscribe anytime. This form never opts you into calls or texts.</p>
+      </form>
     </div>
-    <form class="guide-form cas" style="--i:2" action="mailto:masonkoski@kw.com" method="get">
-      <label for="f-name">Name</label>
-      <input id="f-name" name="subject" placeholder="Your name" autocomplete="name">
-      <label for="f-email">Email</label>
-      <input id="f-email" name="body" type="email" placeholder="you@example.com" autocomplete="email" required>
-      <button class="btn btn-cream" type="submit" style="border:0;cursor:pointer;font-family:inherit">Send me the guide</button>
-      <p class="consent">By requesting the guide you agree to receive occasional email from Mason Koski Real Estate. No spam, unsubscribe anytime. This form never opts you into calls or texts.</p>
-    </form>
+    <div class="guide cas-group" style="margin-top:clamp(2.5rem,6vw,4.5rem);padding-top:clamp(2.5rem,6vw,4.5rem);border-top:1px solid var(--hairline-dark)">
+      <div class="cas" style="--i:0">
+        <span class="eyebrow">The Home Selling Guide</span>
+        <h2 class="display" style="margin-top:1rem">Thinking about <em>selling?</em></h2>
+        <p>How I prep, price, photograph, and market a listing so it reaches the right buyers and their agents, then closes on your terms.</p>
+      </div>
+      <form class="guide-form cas" style="--i:2" action="mailto:masonkoski@kw.com" method="get">
+        <label for="s-name">Name</label>
+        <input id="s-name" name="subject" placeholder="Your name" autocomplete="name">
+        <label for="s-email">Email</label>
+        <input id="s-email" name="body" type="email" placeholder="you@example.com" autocomplete="email" required>
+        <button class="btn btn-cream" type="submit" style="border:0;cursor:pointer;font-family:inherit">Send me the guide</button>
+        <p class="consent">By requesting the guide you agree to receive occasional email from Mason Koski Real Estate. No spam, unsubscribe anytime. This form never opts you into calls or texts.</p>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -656,23 +611,26 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
   <div class="shell">
     <div class="foot-grid">
       <div class="foot-logo">
-        <img src="data:image/png;base64,%%LOGO%%" alt="Mason Koski, Atlanta Realtor">
+        <span class="wordmark">
+          <span class="wm-name">Mason Koski</span>
+          <span class="wm-sub">Atlanta Realtor</span>
+        </span>
       </div>
       <div>
-        <h4>Buy</h4>
-        <ul><li><a href="#buy">The 10-step process</a></li><li><a href="#honest">How agents get paid</a></li><li><a href="#honest">Down payment assistance</a></li><li><a href="#doors">Readiness check</a></li></ul>
+        <h4>Work with me</h4>
+        <ul><li><a href="#buy">Buying</a></li><li><a href="#sell">Selling</a></li></ul>
       </div>
       <div>
         <h4>Explore</h4>
-        <ul><li><a href="#neighborhoods">Neighborhoods</a></li><li><a href="#journal">Journal</a></li><li><a href="%%STORYLINK%%">My Story</a></li></ul>
+        <ul><li><a href="#neighborhoods">Where I Work</a></li><li><a href="#network">The Network</a></li><li><a href="%%STORYLINK%%">My Story</a></li></ul>
       </div>
       <div>
         <h4>Connect</h4>
-        <ul><li><a href="tel:+14048843134">(404) 884-3134</a></li><li><a href="mailto:masonkoski@kw.com">masonkoski@kw.com</a></li><li><a href="#reviews">Reviews</a></li><li><a href="%%STORYLINK%%#vamo">VAMO</a></li></ul>
+        <ul><li><a href="tel:+14048843134">(404) 884-3134</a></li><li><a href="mailto:masonkoski@kw.com">masonkoski@kw.com</a></li><li><a href="#reviews">Reviews</a></li></ul>
       </div>
     </div>
     <div class="legal">
-      <p>Mason Koski, REALTOR® · Keller Williams Realty Metro Atlanta · 101 W Ponce de Leon Ave Suite 200, Decatur, GA 30030. Each Keller Williams office is independently owned and operated. Georgia license number and broker information displayed per GREC advertising rules; final details pending broker verification. This is a design draft; all facts subject to the Phase&nbsp;0 verification pass. Market figures dated and sourced where shown.</p>
+      <p>Mason Koski, REALTOR® · Keller Williams Realty Metro Atlanta · 101 W Ponce de Leon Ave Suite 200, Decatur, GA 30030. Each Keller Williams office is independently owned and operated.</p>
       <div class="legal-marks" aria-label="Equal Housing Opportunity and REALTOR marks">
         <svg width="34" height="34" viewBox="0 0 24 24" role="img" aria-label="Equal Housing Opportunity" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3 3 10h2v10h14V10h2L12 3z"/><path d="M8 13h8M8 16h8"/></svg>
         <span class="brandcaps" style="font-size:.64rem">Equal Housing<br>Opportunity</span>
@@ -684,6 +642,25 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
 <script>
 (function(){
   var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- Wordmark: track "Atlanta Realtor" to the exact width of "Mason Koski" --- */
+  function fitWordmark(wm){
+    var name = wm.querySelector('.wm-name'), sub = wm.querySelector('.wm-sub');
+    if (!name || !sub) return;
+    sub.style.letterSpacing = '0px'; sub.style.marginRight = '0px';
+    var target = name.getBoundingClientRect().width;
+    var natural = sub.getBoundingClientRect().width;
+    var n = sub.textContent.replace(/\s/g,'').length;
+    if (n < 2 || target <= natural) return;
+    var ls = (target - natural) / n;
+    sub.style.letterSpacing = ls + 'px';
+    sub.style.marginRight = (-ls) + 'px';
+  }
+  function fitAll(){ document.querySelectorAll('.wordmark').forEach(fitWordmark); }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+  fitAll();
+  addEventListener('resize', fitAll);
+
 
   var navToggle = document.querySelector('.nav-toggle');
   var mobileMenu = document.getElementById('mobile-menu');
