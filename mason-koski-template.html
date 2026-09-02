@@ -385,7 +385,7 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
 <header class="hero" id="top">
   <div class="shell hero-grid">
     <div>
-      <span class="eyebrow hload" style="--d:.15s">Atlanta REALTOR® · Keller Williams Realty Metro Atlanta</span>
+      <span class="eyebrow hload" style="--d:.15s">Atlanta REALTOR® · Compass</span>
       <h1 class="display" id="hero-h">
         <span class="sr-only">I don’t just know the streets of Atlanta. I know the people who live on them.</span>
         <span aria-hidden="true" id="hero-words">I don’t just know the <em>streets</em> of Atlanta. I know the <em>people</em> who live on them.</span>
@@ -595,11 +595,13 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
         <h2 class="display" id="guide-h" style="margin-top:1rem">New to the home <em>buying process?</em></h2>
         <p>The full Georgia buying process: due diligence windows, earnest money, closing attorneys, and what it all costs, written in plain English.</p>
       </div>
-      <form class="guide-form cas" style="--i:2" action="mailto:masonkoski@kw.com" method="get">
+      <form class="guide-form cas" style="--i:2" action="https://formspree.io/f/mljenbkq" method="POST">
+        <input type="hidden" name="_subject" value="Home Buying Guide request">
+        <input type="hidden" name="guide" value="Home Buying Guide">
         <label for="f-name">Name</label>
-        <input id="f-name" name="subject" placeholder="Your name" autocomplete="name">
+        <input id="f-name" name="name" placeholder="Your name" autocomplete="name" required>
         <label for="f-email">Email</label>
-        <input id="f-email" name="body" type="email" placeholder="you@example.com" autocomplete="email" required>
+        <input id="f-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
         <button class="btn btn-cream" type="submit" style="border:0;cursor:pointer;font-family:inherit">Send me the guide</button>
         <p class="consent">By requesting the guide you agree to receive occasional email from Mason Koski Real Estate. No spam, unsubscribe anytime. This form never opts you into calls or texts.</p>
       </form>
@@ -610,11 +612,13 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
         <h2 class="display" style="margin-top:1rem">Thinking about <em>selling?</em></h2>
         <p>How I prep, price, photograph, and market a listing so it reaches the right buyers and their agents, then closes on your terms.</p>
       </div>
-      <form class="guide-form cas" style="--i:2" action="mailto:masonkoski@kw.com" method="get">
+      <form class="guide-form cas" style="--i:2" action="https://formspree.io/f/mljenbkq" method="POST">
+        <input type="hidden" name="_subject" value="Home Selling Guide request">
+        <input type="hidden" name="guide" value="Home Selling Guide">
         <label for="s-name">Name</label>
-        <input id="s-name" name="subject" placeholder="Your name" autocomplete="name">
+        <input id="s-name" name="name" placeholder="Your name" autocomplete="name" required>
         <label for="s-email">Email</label>
-        <input id="s-email" name="body" type="email" placeholder="you@example.com" autocomplete="email" required>
+        <input id="s-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
         <button class="btn btn-cream" type="submit" style="border:0;cursor:pointer;font-family:inherit">Send me the guide</button>
         <p class="consent">By requesting the guide you agree to receive occasional email from Mason Koski Real Estate. No spam, unsubscribe anytime. This form never opts you into calls or texts.</p>
       </form>
@@ -645,11 +649,11 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
       </div>
       <div>
         <h4>Connect</h4>
-        <ul><li><a href="tel:+14048843134">(404) 884-3134</a></li><li><a href="mailto:masonkoski@kw.com">masonkoski@kw.com</a></li><li><a href="https://www.instagram.com/masonkoskirealestate/" target="_blank" rel="noopener">Instagram</a></li><li><a href="#reviews">Reviews</a></li></ul>
+        <ul><li><a href="tel:+14048843134">(404) 884-3134</a></li><li><a href="mailto:mason.koski@compass.com">mason.koski@compass.com</a></li><li><a href="https://www.instagram.com/masonkoskirealestate/" target="_blank" rel="noopener">Instagram</a></li><li><a href="#reviews">Reviews</a></li></ul>
       </div>
     </div>
     <div class="legal">
-      <p>Mason Koski, REALTOR® · Keller Williams Realty Metro Atlanta · 101 W Ponce de Leon Ave Suite 200, Decatur, GA 30030. Each Keller Williams office is independently owned and operated.</p>
+      <p>Mason Koski, REALTOR® · Compass · 1409 Peachtree St NE, Atlanta, GA 30309.</p>
       <div class="legal-marks" aria-label="Equal Housing Opportunity and REALTOR marks">
         <svg width="34" height="34" viewBox="0 0 24 24" role="img" aria-label="Equal Housing Opportunity" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3 3 10h2v10h14V10h2L12 3z"/><path d="M8 13h8M8 16h8"/></svg>
         <span class="brandcaps" style="font-size:.64rem">Equal Housing<br>Opportunity</span>
