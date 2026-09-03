@@ -7,11 +7,11 @@
 /* Shares the Mason Koski system — see mason-koski.html for the computed
    contrast table. Same tokens, same rules. */
 :root{
-  --paper:#f7f2e9; --paper-alt:#efe6d6;
-  --ink:#241d14; --ink-deep:#191309;
-  --blue:#b7cdf4; --blue-deep:#2d4d9c;
-  --muted:#6b6156; --muted-dark:#bfb3a1;
-  --hairline:rgba(36,29,20,.15); --hairline-dark:rgba(247,242,233,.18);
+  --paper:#0d0d0d; --paper-alt:#141414;
+  --ink:#f4f4f4; --ink-deep:#ffffff;
+  --blue:#0d0d0d; --blue-deep:#f4f4f4;
+  --muted:#a0a0a0; --muted-dark:#5c5c5c;
+  --hairline:rgba(255,255,255,.14); --hairline-dark:rgba(0,0,0,.15);
   --radius:16px; --radius-sm:9px;
   --step--1:clamp(.88rem,.84rem + .2vw,1rem);
   --step-0:clamp(1.05rem,1rem + .35vw,1.2rem);
@@ -37,7 +37,7 @@ a{color:inherit}
 .skip:focus{transform:none}
 :focus-visible{outline:2px solid var(--blue-deep);outline-offset:3px;border-radius:2px}
 .on-dark :focus-visible{outline-color:var(--blue)}
-.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.045;mix-blend-mode:multiply;
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.045;mix-blend-mode:screen;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size:220px 220px}
 .display{font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-weight:600;line-height:1.06;letter-spacing:-.008em;text-wrap:balance}
@@ -46,7 +46,7 @@ a{color:inherit}
 .on-dark .eyebrow{color:var(--blue)}
 p{max-width:56ch;text-wrap:pretty}
 .muted{color:var(--muted)}
-.nav{position:fixed;top:1rem;left:50%;margin-left:calc(var(--shell)/-2);width:var(--shell);z-index:70;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.6rem .6rem .6rem 1.2rem;border-radius:999px;background:rgba(247,242,233,.86);-webkit-backdrop-filter:blur(14px) saturate(1.15);backdrop-filter:blur(14px) saturate(1.15);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 -1px 0 rgba(36,29,20,.12),0 12px 32px rgba(25,19,9,.16);color:var(--ink)}
+.nav{position:fixed;top:1rem;left:50%;margin-left:calc(var(--shell)/-2);width:var(--shell);z-index:70;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.6rem .6rem .6rem 1.2rem;border-radius:999px;background:rgba(16,16,16,.9);-webkit-backdrop-filter:blur(14px) saturate(1.15);backdrop-filter:blur(14px) saturate(1.15);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),inset 0 -1px 0 rgba(36,29,20,.12),0 12px 32px rgba(25,19,9,.16);color:var(--ink)}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
 .wordmark{display:inline-flex;flex-direction:column;align-items:center;line-height:1;font-family:"Source Serif 4",Georgia,serif;white-space:nowrap}
 .wm-name{font-weight:700;font-size:1.12rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
@@ -57,7 +57,7 @@ p{max-width:56ch;text-wrap:pretty}
 .nav-links a:hover::after,.nav-links a[aria-current]::after{right:0}
 .btn{display:inline-block;text-decoration:none;border-radius:999px;padding:.78rem 1.6rem;font-weight:700;font-size:.92rem;transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out);will-change:transform}
 .btn-blue{background:var(--blue-deep);color:var(--paper)}
-.btn-blue:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(45,77,156,.35)}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.28)}
 .btn-cream{background:var(--paper);color:var(--ink)}
 .btn-cream:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(25,19,9,.35)}
 .btn-line-ink{border:1.5px solid var(--hairline);color:var(--ink);font-weight:700}
@@ -85,7 +85,7 @@ section{padding-block:var(--section-y)}
 .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 @media (max-width:60rem){.nav-toggle{display:flex}}
 .mobile-menu{position:fixed;top:4.6rem;left:50%;margin-left:calc(var(--shell)/-2);width:var(--shell);z-index:65;
-  background:rgba(247,242,233,.97);-webkit-backdrop-filter:blur(14px) saturate(1.15);backdrop-filter:blur(14px) saturate(1.15);
+  background:rgba(16,16,16,.97);-webkit-backdrop-filter:blur(14px) saturate(1.15);backdrop-filter:blur(14px) saturate(1.15);
   border-radius:20px;box-shadow:0 20px 44px rgba(25,19,9,.22);padding:.7rem;
   opacity:0;transform:translateY(-10px) scale(.98);transform-origin:top center;pointer-events:none;
   transition:opacity .3s var(--ease-out),transform .3s var(--ease-out)}
@@ -236,7 +236,7 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
     </div>
     <div class="sportrait hload" style="--d:.35s">
       <div class="frame">
-        <img src="data:image/jpeg;base64,%%PORTRAIT%%" alt="Mason Koski, smiling, in a blue and white toile dress" width="733" height="1100">
+        <img src="data:image/jpeg;base64,%%PORTRAIT%%" alt="Mason Koski, smiling, in a white top and black trousers" width="733" height="1100">
       </div>
     </div>
   </div>

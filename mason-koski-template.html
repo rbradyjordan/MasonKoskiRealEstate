@@ -5,29 +5,26 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Public+Sans:wght@400;500;600;700&display=swap">
 <style>
 /* ============================================================
-   MASON KOSKI REAL ESTATE — v2 "Porcelain & porch light"
-   Palette sampled from the client's own collateral (§1.8):
-   cream + warm near-black from the portrait's background,
-   china blue from the toile dress. Display serif is sturdy and
-   low-contrast to match the real wordmark — no hairlines.
-   Contrast, computed not estimated (§1.2):
-     ink/paper 14.94 · ink/paper-alt 13.45 · muted/paper 5.43
-     muted/paper-alt 4.89 · blue-deep/paper 7.10 ·
-     blue-deep/paper-alt 6.39 · paper/ink-deep 16.54 ·
-     blue/ink 10.35 · blue/ink-deep 11.47 · muted-dark/ink-deep 8.94
-     paper on blue-deep ≈ blue-deep/paper = 7.10
+   MASON KOSKI REAL ESTATE — Compass black & white (dark)
+   Monochrome palette, inverted: near-black is the majority
+   surface, text is near-white, a few "on-dark" bands flip to
+   white for rhythm. The --blue / --blue-deep tokens are kept as
+   names only — no colour accent, in line with Compass branding.
+   --paper  = dark surface   · --ink       = light text
+   --blue-deep = light accent · --blue      = dark accent
+   --muted = muted-on-dark    · --muted-dark = muted-on-light
    ============================================================ */
 :root{
-  --paper:#f7f2e9;
-  --paper-alt:#efe6d6;
-  --ink:#241d14;        /* warm near-black, from the portrait background */
-  --ink-deep:#191309;
-  --blue:#b7cdf4;       /* accent ON DARK — not interchangeable (§2.3) */
-  --blue-deep:#2d4d9c;  /* accent ON LIGHT — 7.10/6.39, body-safe on both */
-  --muted:#6b6156;
-  --muted-dark:#bfb3a1;
-  --hairline:rgba(36,29,20,.15);
-  --hairline-dark:rgba(247,242,233,.18);
+  --paper:#0d0d0d;              /* majority surface — near-black */
+  --paper-alt:#141414;          /* alt bands — a hair lifted */
+  --ink:#f4f4f4;                /* primary text on dark */
+  --ink-deep:#ffffff;           /* flips the few on-dark bands to white */
+  --blue:#0d0d0d;               /* accent on the flipped white bands */
+  --blue-deep:#f4f4f4;          /* accent on the dark majority */
+  --muted:#a0a0a0;              /* muted text on dark */
+  --muted-dark:#5c5c5c;         /* muted text on the white bands */
+  --hairline:rgba(255,255,255,.14);
+  --hairline-dark:rgba(0,0,0,.15);
   --radius:16px; --radius-sm:9px;
   --step--1:clamp(.88rem,.84rem + .2vw,1rem);
   --step-0:clamp(1.05rem,1rem + .35vw,1.2rem);
@@ -63,7 +60,7 @@ a{color:inherit}
 .on-dark :focus-visible,.on-blue :focus-visible{outline-color:var(--blue)}
 
 /* Grain — fixed, non-animated (§6.3) */
-.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.045;mix-blend-mode:multiply;
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.045;mix-blend-mode:screen;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size:220px 220px}
 
@@ -81,9 +78,9 @@ p{max-width:56ch;text-wrap:pretty}
    backdrop-filter never transitioned (trap #2). ---------- */
 .nav{position:fixed;top:1rem;left:50%;margin-left:calc(var(--shell)/-2);width:var(--shell);z-index:70;display:flex;justify-content:space-between;align-items:center;gap:1rem;
   padding:.6rem .6rem .6rem 1.2rem;border-radius:999px;
-  background:rgba(247,242,233,.86);
+  background:rgba(16,16,16,.9);
   -webkit-backdrop-filter:blur(14px) saturate(1.15);backdrop-filter:blur(14px) saturate(1.15);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 -1px 0 rgba(36,29,20,.12),0 12px 32px rgba(25,19,9,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.1),inset 0 -1px 0 rgba(36,29,20,.12),0 12px 32px rgba(25,19,9,.16);
   color:var(--ink)}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
 .wordmark{display:inline-flex;flex-direction:column;align-items:center;line-height:1;font-family:"Source Serif 4",Georgia,serif;white-space:nowrap}
@@ -95,7 +92,7 @@ p{max-width:56ch;text-wrap:pretty}
 .nav-links a:hover::after{right:0}
 .btn{display:inline-block;text-decoration:none;border-radius:999px;padding:.78rem 1.6rem;font-weight:700;font-size:.92rem;transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out);will-change:transform}
 .btn-blue{background:var(--blue-deep);color:var(--paper)}
-.btn-blue:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(45,77,156,.35)}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.28)}
 .btn-cream{background:var(--paper);color:var(--ink)}
 .btn-cream:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(25,19,9,.35)}
 .btn-line-ink{border:1.5px solid var(--hairline);color:var(--ink);font-weight:700}
@@ -122,7 +119,7 @@ p{max-width:56ch;text-wrap:pretty}
 .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 @media (max-width:60rem){.nav-toggle{display:flex}}
 .mobile-menu{position:fixed;top:4.6rem;left:50%;margin-left:calc(var(--shell)/-2);width:var(--shell);z-index:65;
-  background:rgba(247,242,233,.97);-webkit-backdrop-filter:blur(14px) saturate(1.15);backdrop-filter:blur(14px) saturate(1.15);
+  background:rgba(16,16,16,.97);-webkit-backdrop-filter:blur(14px) saturate(1.15);backdrop-filter:blur(14px) saturate(1.15);
   border-radius:20px;box-shadow:0 20px 44px rgba(25,19,9,.22);padding:.7rem;
   opacity:0;transform:translateY(-10px) scale(.98);transform-origin:top center;pointer-events:none;
   transition:opacity .3s var(--ease-out),transform .3s var(--ease-out)}
@@ -187,7 +184,7 @@ section{padding-block:var(--section-y)}
 
 /* Pillars — arch-topped cards, cascading */
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
-.pillar{background:#fdfaf4;border:1px solid var(--hairline);border-radius:5.5rem 5.5rem var(--radius) var(--radius);padding:3rem 1.9rem 2rem;display:flex;flex-direction:column;gap:1rem;text-align:center;align-items:center;
+.pillar{background:#1c1c1c;border:1px solid var(--hairline);border-radius:5.5rem 5.5rem var(--radius) var(--radius);padding:3rem 1.9rem 2rem;display:flex;flex-direction:column;gap:1rem;text-align:center;align-items:center;
   transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out),opacity .7s var(--ease-out);will-change:transform}
 .pillar:hover{transform:translateY(-8px);box-shadow:0 20px 44px rgba(25,19,9,.13)}
 .pillar .glyph{width:3.2rem;height:3.2rem;border-radius:999px;background:var(--blue-deep);color:var(--paper);display:grid;place-items:center;font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-size:1.35rem}
@@ -199,7 +196,7 @@ section{padding-block:var(--section-y)}
 
 /* ---------- Neighborhoods — arch doors ---------- */
 .hoods{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
-.hood{position:relative;border:1px solid var(--hairline);border-radius:6rem 6rem var(--radius) var(--radius);padding:2.8rem 1.7rem 1.7rem;background:#fdfaf4;display:flex;flex-direction:column;gap:.85rem;min-height:16rem;text-decoration:none;overflow:clip;text-align:center;align-items:center;
+.hood{position:relative;border:1px solid var(--hairline);border-radius:6rem 6rem var(--radius) var(--radius);padding:2.8rem 1.7rem 1.7rem;background:#1c1c1c;display:flex;flex-direction:column;gap:.85rem;min-height:16rem;text-decoration:none;overflow:clip;text-align:center;align-items:center;
   transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out),opacity .7s var(--ease-out);will-change:transform}
 .hood:hover{transform:translateY(-8px);box-shadow:0 20px 44px rgba(25,19,9,.13)}
 .hood::before{content:"";position:absolute;inset:.55rem;border:1.5px solid var(--hairline);border-radius:5.6rem 5.6rem calc(var(--radius) - 4px) calc(var(--radius) - 4px);pointer-events:none;transition:border-color .35s var(--ease-out)}
@@ -216,17 +213,17 @@ section{padding-block:var(--section-y)}
 .door{border-radius:var(--radius);padding:clamp(1.8rem,3vw,2.5rem);display:flex;flex-direction:column;gap:1rem;min-height:16rem;text-decoration:none;transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out),opacity .7s var(--ease-out);will-change:transform}
 .door:hover{transform:translateY(-8px)}
 .door-1{background:var(--blue-deep);color:var(--paper)}
-.door-1:hover{box-shadow:0 20px 42px rgba(45,77,156,.35)}
+.door-1:hover{box-shadow:0 20px 42px rgba(0,0,0,.3)}
 .door-2{background:var(--ink);color:var(--paper)}
 .door-2:hover{box-shadow:0 20px 42px rgba(25,19,9,.32)}
-.door-3{background:#fdfaf4;color:var(--ink);border:1px solid var(--hairline)}
+.door-3{background:#1c1c1c;color:var(--ink);border:1px solid var(--hairline)}
 .door-3:hover{box-shadow:0 18px 36px rgba(25,19,9,.12)}
 .door .k{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-size:var(--step-1)}
 .door-1 .k,.door-2 .k{color:var(--blue)}
 .door-3 .k{color:var(--blue-deep)}
 .door h3{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:var(--step-2);line-height:1.12;text-wrap:balance}
 .door p{font-size:var(--step--1);line-height:1.55}
-.door-1 p{color:rgba(247,242,233,.88)}
+.door-1 p{color:rgba(0,0,0,.72)}
 .door-2 p{color:var(--muted-dark)}
 .door-3 p{color:var(--muted)}
 .door .go{margin-top:auto;font-weight:700;font-size:var(--step--1)}
@@ -259,7 +256,7 @@ section{padding-block:var(--section-y)}
 .rev-card footer{margin-top:auto;display:flex;flex-direction:column;gap:.15rem;background:none;border:0;padding:0}
 .rev-card cite{font-style:normal;font-weight:700;font-size:var(--step--1)}
 .rev-card small{color:var(--muted);font-size:.78rem}
-.rev-stats{display:flex;gap:2.6rem;flex-wrap:wrap;margin-top:clamp(2.2rem,4.5vw,3.4rem);padding-top:1.8rem;border-top:1px solid rgba(247,242,233,.25)}
+.rev-stats{display:flex;gap:2.6rem;flex-wrap:wrap;margin-top:clamp(2.2rem,4.5vw,3.4rem);padding-top:1.8rem;border-top:1px solid rgba(0,0,0,.18)}
 .rev-stats div{display:flex;flex-direction:column;gap:.15rem}
 .rev-stats strong{font-family:"Source Serif 4",Georgia,serif;font-weight:700;font-size:var(--step-2);font-variant-numeric:tabular-nums}
 .rev-stats span{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-weight:600}
@@ -291,7 +288,7 @@ section{padding-block:var(--section-y)}
 
 /* ---------- Journal ---------- */
 .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
-.post{border:1px solid var(--hairline);border-radius:var(--radius);padding:1.7rem 1.6rem;background:#fdfaf4;display:flex;flex-direction:column;gap:.9rem;min-height:13rem;text-decoration:none;transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out),opacity .7s var(--ease-out);will-change:transform}
+.post{border:1px solid var(--hairline);border-radius:var(--radius);padding:1.7rem 1.6rem;background:#1c1c1c;display:flex;flex-direction:column;gap:.9rem;min-height:13rem;text-decoration:none;transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out),opacity .7s var(--ease-out);will-change:transform}
 .post:hover{transform:translateY(-8px);box-shadow:0 18px 36px rgba(25,19,9,.12)}
 .post time{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-deep);font-weight:700}
 .post h3{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:var(--step-1);line-height:1.2;text-wrap:balance}
@@ -306,11 +303,22 @@ section{padding-block:var(--section-y)}
 .guide p{color:var(--muted-dark);margin-top:1rem}
 .guide-form{display:flex;flex-direction:column;gap:.9rem}
 .guide-form label{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-dark);font-weight:600}
-.guide-form input{background:rgba(247,242,233,.07);border:1px solid var(--hairline-dark);border-radius:var(--radius-sm);padding:.95rem 1.1rem;color:var(--paper);font:inherit}
+.guide-form input{background:rgba(0,0,0,.05);border:1px solid var(--hairline-dark);border-radius:var(--radius-sm);padding:.95rem 1.1rem;color:var(--paper);font:inherit}
 .guide-form input::placeholder{color:var(--muted-dark)}
 .guide-form input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .consent{font-size:.74rem;color:var(--muted-dark);line-height:1.5;max-width:46ch}
 @media (max-width:56rem){.guide{grid-template-columns:1fr}}
+
+/* ---------- Meet Mason — standing portrait beside a short intro ---------- */
+.meet{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2.5rem,6vw,5rem);align-items:center}
+.meet-photo{position:relative;justify-self:center;width:min(100%,24rem)}
+.meet-photo .frame{border-radius:var(--radius) var(--radius) 999rem 999rem;overflow:clip;box-shadow:0 30px 70px rgba(10,10,10,.22)}
+.meet-photo img{display:block;width:100%;height:auto}
+.meet-photo::before{content:"";position:absolute;inset:0;transform:translate(-1.15rem,1.15rem);border:2px solid var(--blue-deep);border-radius:var(--radius) var(--radius) 999rem 999rem;z-index:-1}
+.meet h2{font-size:var(--step-3)}
+.meet .muted{margin-top:1rem}
+.meet .btn{margin-top:1.8rem}
+@media (max-width:56rem){.meet{grid-template-columns:1fr}.meet-photo{width:min(100%,20rem)}}
 
 /* ---------- Footer ---------- */
 footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;border-top:1px solid var(--hairline-dark)}
@@ -402,7 +410,7 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
     </div>
     <div class="portrait-wrap hload-pop" style="--d:.35s">
       <div class="portrait">
-        <img src="data:image/jpeg;base64,%%PORTRAIT%%" alt="Mason Koski, smiling, in a blue and white toile dress" width="1100" height="1649">
+        <img src="data:image/jpeg;base64,%%PORTRAIT%%" alt="Mason Koski, smiling, in a white top and black trousers" width="733" height="1100">
       </div>
       <span class="portrait-cap">Atlanta raised · <b>Local Realtor</b></span>
     </div>
@@ -538,7 +546,7 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
       </div>
       <div class="cas" style="--i:1">
         <span class="eyebrow">In their words</span>
-        <h2 class="display" id="rev-h" style="margin-top:.8rem">Ten reviews. Ten five-star ratings.</h2>
+        <h2 class="display" id="rev-h" style="margin-top:.8rem">Five star service every time.</h2>
       </div>
     </div>
     <div class="rev-cards cas-group">
@@ -582,6 +590,23 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
         <h3>Attorneys &amp; Lenders</h3>
         <p>Closing attorneys and lenders who answer the phone, hit their deadlines, and have closed with me enough times to know exactly how I work.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MEET MASON ============ -->
+<section class="on-light" id="meet" aria-labelledby="meet-h">
+  <div class="shell meet cas-group">
+    <div class="meet-photo cas" style="--i:0">
+      <div class="frame">
+        <img src="data:image/jpeg;base64,%%STANDING%%" alt="Mason Koski standing in a Compass lobby, smiling" width="800" height="1200" loading="lazy">
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow cas" style="--i:1">Meet Mason</span>
+      <h2 class="display cas" style="--i:2;margin-top:.8rem" id="meet-h">Atlanta born, Compass backed.</h2>
+      <p class="muted cas" style="--i:3">A Decatur native and magna cum laude UGA graduate, Mason has sold millions in volume while guiding clients, family, and friends through every step of buying and selling — now with the marketing and network of Compass behind her.</p>
+      <a class="btn btn-line-ink cas" style="--i:4" href="%%STORYLINK%%">Read my story</a>
     </div>
   </div>
 </section>

@@ -7,11 +7,13 @@ const storyLink = mode === 'artifact' ? process.argv[3] : 'my-story.html';
 const homeLink  = mode === 'artifact' ? process.argv[4] : 'index.html';
 
 const portrait = fs.readFileSync('portrait.b64', 'utf8').trim();
+const standing = fs.readFileSync('standing.b64', 'utf8').trim();
 
 function build(tpl, out) {
   let html = fs.readFileSync(tpl, 'utf8');
   html = html
     .split('%%PORTRAIT%%').join(portrait)
+    .split('%%STANDING%%').join(standing)
     .split('%%STORYLINK%%').join(storyLink)
     .split('%%HOMELINK%%').join(homeLink);
   fs.writeFileSync(out, html);
