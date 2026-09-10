@@ -519,7 +519,7 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
         <p>Pre-approval guidance, a search built around your criteria, private and off-market showings through my agent network, and an offer strategy that wins without overpaying.</p>
         <span class="go">How I help buyers →</span>
       </a>
-      <a class="door door-2 cas" style="--i:1" href="#selling-guide" id="sell">
+      <a class="door door-2 cas" style="--i:1" href="#contact" id="sell">
         <span class="k" aria-hidden="true">For sellers</span>
         <h3>I’m selling.</h3>
         <p>Pricing from real comps, a full prep and staging plan, professional photography, and marketing that reaches the right buyers and the agents who represent them.</p>
@@ -614,38 +614,22 @@ footer{background:var(--ink-deep);color:var(--paper);padding:4rem 0 2.5rem;borde
 <!-- ============ GUIDE CAPTURE ============ -->
 <section class="on-dark" id="contact" aria-labelledby="guide-h">
   <div class="shell">
-    <div class="guide cas-group">
+    <div class="guide cas-group" id="selling-guide">
       <div class="cas" style="--i:0">
-        <span class="eyebrow">The Home Buying Guide</span>
-        <h2 class="display" id="guide-h" style="margin-top:1rem">New to the home <em>buying process?</em></h2>
-        <p>The full Georgia buying process: due diligence windows, earnest money, closing attorneys, and what it all costs, written in plain English.</p>
+        <span class="eyebrow">Let's talk</span>
+        <h2 class="display" id="guide-h" style="margin-top:1rem">Thinking of <em>buying or selling</em> a home?</h2>
+        <p>Send a few details and I'll follow up personally, whether you're just starting to think about a move or ready to plan one.</p>
       </div>
       <form class="guide-form cas" style="--i:2" action="https://formspree.io/f/mljenbkq" method="POST">
-        <input type="hidden" name="_subject" value="Home Buying Guide request">
-        <input type="hidden" name="guide" value="Home Buying Guide">
+        <input type="hidden" name="_subject" value="Website inquiry — buying or selling a home">
         <label for="f-name">Name</label>
         <input id="f-name" name="name" placeholder="Your name" autocomplete="name" required>
         <label for="f-email">Email</label>
         <input id="f-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
-        <button class="btn btn-cream" type="submit" style="border:0;cursor:pointer;font-family:inherit">Send me the guide</button>
-        <p class="consent">By requesting the guide you agree to receive occasional email from Mason Koski Real Estate. No spam, unsubscribe anytime. This form never opts you into calls or texts.</p>
-      </form>
-    </div>
-    <div class="guide cas-group" id="selling-guide" style="margin-top:clamp(2.5rem,6vw,4.5rem);padding-top:clamp(2.5rem,6vw,4.5rem);border-top:1px solid var(--hairline-dark);scroll-margin-top:6.5rem">
-      <div class="cas" style="--i:0">
-        <span class="eyebrow">The Home Selling Guide</span>
-        <h2 class="display" style="margin-top:1rem">Thinking about <em>selling?</em></h2>
-        <p>How I prep, price, photograph, and market a listing so it reaches the right buyers and their agents, then closes on your terms.</p>
-      </div>
-      <form class="guide-form cas" style="--i:2" action="https://formspree.io/f/mljenbkq" method="POST">
-        <input type="hidden" name="_subject" value="Home Selling Guide request">
-        <input type="hidden" name="guide" value="Home Selling Guide">
-        <label for="s-name">Name</label>
-        <input id="s-name" name="name" placeholder="Your name" autocomplete="name" required>
-        <label for="s-email">Email</label>
-        <input id="s-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
-        <button class="btn btn-cream" type="submit" style="border:0;cursor:pointer;font-family:inherit">Send me the guide</button>
-        <p class="consent">By requesting the guide you agree to receive occasional email from Mason Koski Real Estate. No spam, unsubscribe anytime. This form never opts you into calls or texts.</p>
+        <label for="f-phone">Phone</label>
+        <input id="f-phone" name="phone" type="tel" placeholder="(404) 555-0123" autocomplete="tel" required>
+        <button class="btn btn-cream" type="submit" style="border:0;cursor:pointer;font-family:inherit">Send</button>
+        <p class="consent">By submitting this form you agree to receive occasional email from Mason Koski Real Estate. No spam, unsubscribe anytime.</p>
       </form>
     </div>
   </div>
