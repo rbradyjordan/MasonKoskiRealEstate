@@ -30,11 +30,16 @@ node build.js local      # file:// preview (images inlined as base64)
 node build.js artifact <storyUrl> <homeUrl>   # hosted preview
 ```
 
-The prod build references `portrait.jpg` / `standing.jpg` as separate
-cacheable files and uses clean cross-page URLs (`/`, `/my-story`). The other
+The prod build references the keyword-named JPEGs
+(`mason-koski-atlanta-realtor.jpg`, `mason-koski-realtor-compass-atlanta.jpg`)
+as separate cacheable files and uses clean cross-page URLs (`/`, `/my-story`). The other
 modes inline `portrait.b64` / `standing.b64` so a single file is portable.
 Inlining is preview-only on purpose: base64 pushed index.html to ~340KB and
-every byte of it blocked first paint; as files, the document is ~53KB.
+every byte of it blocked first paint; as files, the document is ~56KB.
+
+**No AVIF** — see the note in `build.js`. macOS `sips` AVIF output decodes to
+solid black in Chrome while looking perfect in Safari. Don't reintroduce it
+without a real encoder and a pixel check in Chrome.
 
 ## SEO
 
@@ -44,16 +49,29 @@ per-page when adding pages:
 - Written `<title>` + meta description per page (query-led, not brand-led)
 - Canonical URLs on the `www.masonkoskirealestate.com` host
 - Open Graph / Twitter cards → `og.jpg` (1200×630, cut from the headshot)
-- JSON-LD: `RealEstateAgent` + `Person` + `WebSite` on the homepage;
-  `ProfilePage` + `BreadcrumbList` on My Story. Generated per page, and it
-  must always describe what's visibly on the page. **No review/rating
+- JSON-LD: `RealEstateAgent` (with the two services from the "doors"
+  section) + `Person` (UGA, Virginia-Highland, VoyageATL feature, Compass
+  profile in `sameAs`) + `WebSite` on the homepage; `ProfilePage` +
+  `BreadcrumbList` on My Story. It must always describe what's visibly on
+  the page. GeorgiaMLS is deliberately **not** in `sameAs` until it stops
+  listing Keller Williams. **No review/rating
   markup** — self-serving `AggregateRating` is against Google policy; the
   Zillow numbers stay visible on-page instead.
 - `robots.txt` + `sitemap.xml` at the root — add new pages to the sitemap
 - `vercel.json` 308s the `*.vercel.app` twin onto the real domain so the
   preview host can't index as duplicate content
+- Heading outline is strict: one `h1` (it contains the visible
+  "Atlanta REALTOR® · Compass" eyebrow), no skipped levels, footer labels are
+  `h2`. The pillars label is `<h2 class="eyebrow">`, which is why the
+  section-title size rule is `.sec-head h2:not(.eyebrow)`.
+- Every neighborhood card has an id — `/#virginia-highland`, `/#decatur`,
+  `/#old-fourth-ward`… — so GBP posts and Instagram can deep-link a card
+- `robots` meta allows large image previews; `llms.txt` gives AI answer
+  engines a factual summary; `404.html` is branded and `noindex`
+- `vercel.json` adds cache headers for images and basic security headers
 - Hero portrait is the LCP element: `fetchpriority="high"`, explicit
-  dimensions everywhere, below-fold images `loading="lazy"`
+  dimensions everywhere, below-fold images `loading="lazy"`. Measured
+  locally: CLS 0, LCP = the hero `h1`
 
 Off-site work (Google Business Profile, citations, reviews) lives in
 [`SEO-PLAN.md`](SEO-PLAN.md).
@@ -66,11 +84,14 @@ Off-site work (Google Business Profile, citations, reviews) lives in
 ├── mason-koski-template.html       ← homepage source
 ├── my-story-template.html          ← My Story source
 ├── build.js                        ← stitches templates + assets
-├── portrait.jpg / portrait.b64     ← hero headshot (file + inline forms)
-├── standing.jpg / standing.b64     ← office portrait (file + inline forms)
+├── mason-koski-atlanta-realtor.jpg         ← hero headshot (prod)
+├── mason-koski-realtor-compass-atlanta.jpg ← office portrait (prod)
+├── portrait.b64 / standing.b64     ← same photos, inlined by preview builds
 ├── og.jpg                          ← 1200×630 social/link-preview card
-├── robots.txt · sitemap.xml        ← crawl plumbing
-├── vercel.json                     ← cleanUrls + vercel.app → domain 308
+├── robots.txt · sitemap.xml        ← crawl plumbing (sitemap lists images)
+├── llms.txt                        ← factual summary for AI answer engines
+├── 404.html                        ← branded, noindex
+├── vercel.json                     ← cleanUrls, vercel.app → domain 308, headers
 └── SEO-PLAN.md                     ← keyword map + off-site checklist
 ```
 

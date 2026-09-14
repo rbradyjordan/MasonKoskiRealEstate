@@ -37,14 +37,18 @@ own title, description, canonical, OG, and a sitemap entry.
    Mason does this herself (Google verifies identity). *Without this, the
    on-page work is fighting with one hand.*
 2. **Fix the NAP break.** GeorgiaMLS (agent MK5777) still says **Keller
-   Williams**; Homes.com and other citations predate Compass. Same name,
+   Williams** *and* lists the old team email `mason@thedammannteam.com`;
+   Homes.com and other citations predate Compass. Same name,
    brokerage, and phone everywhere — the inconsistency is an invisible drag,
    and stale KW listings actively confuse Google about who she is.
 3. **Review velocity.** Zillow shows 5.0 × 10 reviews. Target: **2/month,
    steady, split between Google (once GBP exists) and Zillow** — recency
    beats totals. Ask at closing, text the link, respond to every one.
 4. **Citations that matter for agents:** realtor.com, Zillow (done),
-   Homes.com (update), Compass profile page linking to this domain,
+   Homes.com (update). **Her Compass profile
+   ([compass.com/agents/mason-koski](https://www.compass.com/agents/mason-koski/))
+   shows no website link** — getting this domain added there is the single
+   most authoritative backlink available to her, and it's a form field.
    LinkedIn (link the site), Instagram bio link → domain, not Linktree.
 5. **Links she already earned:** the VoyageATL feature exists — ask them to
    link the domain. VAMO Rising Professionals site/socials should link her
@@ -77,7 +81,32 @@ she can supply are the moat.
       black theme when touched next
 - [ ] The old cream-era claims (market stats) — verify dates before reuse
 
-## What was shipped in the technical pass (2026-09-14)
+## Pass 2 — what shipped (2026-09-14)
+
+- **Heading outline repaired.** Pillars had `h3`s under no `h2`; footer
+  jumped to `h4`; My Story's narrative had **no content headings at all**.
+  All fixed without any visual change.
+- **H1 keyword made visible, not hidden.** Pass 1 put "Atlanta real estate
+  agent" in sr-only text that no sighted user sees — defensible, but hidden
+  text that differs from the visible headline is exactly what Google's
+  spam guidance is wary of. The eyebrow "Atlanta REALTOR® · Compass" now sits
+  *inside* the `h1` instead: real, visible, identical on screen.
+- **Neighborhood deep links.** 9 cards all linked to `#neighborhoods` — the
+  section they're already in. Each now has its own anchor for sharing.
+- **Schema depth.** Services offered, UGA, home neighborhood, the VoyageATL
+  feature as `subjectOf`, Compass profile in `sameAs`, neighborhoods nested
+  inside Atlanta. GeorgiaMLS **removed** from `sameAs` — it still says Keller
+  Williams, and declaring it the same entity feeds Google the stale
+  brokerage. Re-add once corrected.
+- **Crawl extras.** Image sitemap, `max-image-preview:large`, `og:type
+  profile` on My Story, `llms.txt`, branded `noindex` 404, cache + security
+  headers, keyword image filenames, a Formspree honeypot, one unused font
+  weight dropped.
+- **Caught before shipping:** an AVIF upgrade (images at ~25% of JPEG size)
+  decoded to **solid black in Chrome** — verified by sampling pixels — while
+  looking perfect in Safari. Reverted; documented in `build.js`.
+
+## Pass 1 — what shipped (2026-09-14)
 
 Proper HTML skeleton (`doctype`/`lang` — the pages had none); query-led
 titles + descriptions; canonicals; OG/Twitter + `og.jpg`; favicon;
