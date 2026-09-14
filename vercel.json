@@ -1,0 +1,12 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "mason-koski-real-estate.vercel.app" }],
+      "destination": "https://www.masonkoskirealestate.com/:path*",
+      "permanent": true
+    }
+  ]
+}
